@@ -10,7 +10,6 @@
 		6EE8AF252B8DAAFF004162F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE8AF242B8DAAFF004162F3 /* AppDelegate.swift */; };
 		6EE8AF272B8DAAFF004162F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE8AF262B8DAAFF004162F3 /* SceneDelegate.swift */; };
 		6EE8AF292B8DAAFF004162F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE8AF282B8DAAFF004162F3 /* ViewController.swift */; };
-		6EE8AF2C2B8DAAFF004162F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EE8AF2A2B8DAAFF004162F3 /* Main.storyboard */; };
 		6EE8AF2E2B8DAB01004162F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6EE8AF2D2B8DAB01004162F3 /* Assets.xcassets */; };
 		6EE8AF312B8DAB01004162F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6EE8AF2F2B8DAB01004162F3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -20,7 +19,6 @@
 		6EE8AF242B8DAAFF004162F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EE8AF262B8DAAFF004162F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6EE8AF282B8DAAFF004162F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6EE8AF2B2B8DAAFF004162F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6EE8AF2D2B8DAB01004162F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6EE8AF302B8DAB01004162F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6EE8AF322B8DAB01004162F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +35,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E4711B72B8DB13C00AF0AD8 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				6EE8AF242B8DAAFF004162F3 /* AppDelegate.swift */,
+				6EE8AF262B8DAAFF004162F3 /* SceneDelegate.swift */,
+				6EE8AF2F2B8DAB01004162F3 /* LaunchScreen.storyboard */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		6E4711B82B8DB13E00AF0AD8 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				6EE8AF322B8DAB01004162F3 /* Info.plist */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		6E4711B92B8DB13F00AF0AD8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		6E4711BA2B8DB14700AF0AD8 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				6EE8AF282B8DAAFF004162F3 /* ViewController.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		6E4711BB2B8DB14A00AF0AD8 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				6EE8AF2D2B8DAB01004162F3 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		6E4711BC2B8DB14D00AF0AD8 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		6EE8AF182B8DAAFF004162F3 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +102,12 @@
 		6EE8AF232B8DAAFF004162F3 /* KazCoin */ = {
 			isa = PBXGroup;
 			children = (
-				6EE8AF242B8DAAFF004162F3 /* AppDelegate.swift */,
-				6EE8AF262B8DAAFF004162F3 /* SceneDelegate.swift */,
-				6EE8AF282B8DAAFF004162F3 /* ViewController.swift */,
-				6EE8AF2A2B8DAAFF004162F3 /* Main.storyboard */,
-				6EE8AF2D2B8DAB01004162F3 /* Assets.xcassets */,
-				6EE8AF2F2B8DAB01004162F3 /* LaunchScreen.storyboard */,
-				6EE8AF322B8DAB01004162F3 /* Info.plist */,
+				6E4711B72B8DB13C00AF0AD8 /* App */,
+				6E4711B82B8DB13E00AF0AD8 /* Config */,
+				6E4711B92B8DB13F00AF0AD8 /* Data */,
+				6E4711BA2B8DB14700AF0AD8 /* Presenter */,
+				6E4711BB2B8DB14A00AF0AD8 /* Resource */,
+				6E4711BC2B8DB14D00AF0AD8 /* Utility */,
 			);
 			path = KazCoin;
 			sourceTree = "<group>";
@@ -127,7 +172,6 @@
 			files = (
 				6EE8AF312B8DAB01004162F3 /* LaunchScreen.storyboard in Resources */,
 				6EE8AF2E2B8DAB01004162F3 /* Assets.xcassets in Resources */,
-				6EE8AF2C2B8DAAFF004162F3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,14 +191,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6EE8AF2A2B8DAAFF004162F3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6EE8AF2B2B8DAAFF004162F3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6EE8AF2F2B8DAB01004162F3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,11 +330,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 75QZ7682T2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KazCoin/Info.plist;
+				INFOPLIST_FILE = KazCoin/Config/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WonTaeYoung;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -323,11 +358,10 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 75QZ7682T2;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KazCoin/Info.plist;
+				INFOPLIST_FILE = KazCoin/Config/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WonTaeYoung;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15;
 				LD_RUNPATH_SEARCH_PATHS = (
