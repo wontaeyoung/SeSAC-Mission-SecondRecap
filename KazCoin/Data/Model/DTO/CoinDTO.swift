@@ -177,3 +177,13 @@ struct SparklineDTO: DefaultValueProvidable {
     return SparklineDTO(price: [.defaultValue])
   }
 }
+
+struct TrendCoinPriceDTO: DefaultValueProvidable {
+  
+  let price: String  // 코인 현재가
+  
+  static var defaultValue: TrendCoinPriceDTO {
+    
+    return TrendCoinPriceDTO(price: .defaultValue)
+  }
+}

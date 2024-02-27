@@ -7,7 +7,7 @@
 
 import KazUtility
 
-struct TrendResponseDTO: DTO {
+struct TrendDTO: DTO {
   
   let coins: [TrendCoinDTO] // 트렌드 코인
   let nfts: [NFTDTO]        // NFT
@@ -20,22 +20,18 @@ struct TrendResponseDTO: DTO {
     )
   }
   
-  static var defaultValue: TrendResponseDTO {
+  static var defaultValue: TrendDTO {
     
-    return TrendResponseDTO(
+    return TrendDTO(
       coins: [.defaultValue],
       nfts: [.defaultValue]
     )
   }
 }
 
-struct TrendCoinDTO: DTO {
+struct TrendCoinDTO: DefaultValueProvidable {
   
   let item: CoinDTO
-  
-  func toEntity() -> TrendCoin {
-    return TrendCoin(item: item.toEntity())
-  }
   
   static var defaultValue: TrendCoinDTO {
     return TrendCoinDTO(item: .defaultValue)
@@ -73,15 +69,5 @@ struct NFTDTO: DTO {
       floor_price_in_native_currency: .defaultValue,
       floor_price_24h_percentage_change: .defaultValue
     )
-  }
-}
-
-struct TrendCoinPriceDTO: DefaultValueProvidable {
-  
-  let price: String                                        // 코인 현재가
-  
-  static var defaultValue: TrendCoinPriceDTO {
-    
-    return TrendCoinPriceDTO(price: .defaultValue)
   }
 }
