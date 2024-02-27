@@ -7,16 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E4711BF2B8DB2AC00AF0AD8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6E4711BE2B8DB2AC00AF0AD8 /* Alamofire */; };
-		6E4711C22B8DB2C900AF0AD8 /* KazRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 6E4711C12B8DB2C900AF0AD8 /* KazRealm */; };
-		6E4711C52B8DB2DC00AF0AD8 /* KazUtility in Frameworks */ = {isa = PBXBuildFile; productRef = 6E4711C42B8DB2DC00AF0AD8 /* KazUtility */; };
-		6E4711C82B8DB2FB00AF0AD8 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6E4711C72B8DB2FB00AF0AD8 /* SnapKit */; };
-		6E4711CB2B8DB30B00AF0AD8 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 6E4711CA2B8DB30B00AF0AD8 /* Toast */; };
+		6E16E4F22B8DF12200C436CF /* KazUtility in Frameworks */ = {isa = PBXBuildFile; productRef = 6E16E4F12B8DF12200C436CF /* KazUtility */; };
+		6E16E4F62B8DF1A500C436CF /* KazRealm in Frameworks */ = {isa = PBXBuildFile; productRef = 6E16E4F52B8DF1A500C436CF /* KazRealm */; };
+		6E16E4F92B8DF1B600C436CF /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 6E16E4F82B8DF1B600C436CF /* SnapKit */; };
+		6E16E4FC2B8DF1C500C436CF /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = 6E16E4FB2B8DF1C500C436CF /* Toast */; };
+		6E16E4FF2B8DF1D800C436CF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 6E16E4FE2B8DF1D800C436CF /* Kingfisher */; };
+		6E16E5012B8DF35A00C436CF /* Coin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5002B8DF35A00C436CF /* Coin.swift */; };
+		6E16E5042B8E2B6B00C436CF /* KazAlamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 6E16E5032B8E2B6B00C436CF /* KazAlamofire */; };
 		6E4711D42B8DB3EB00AF0AD8 /* CoinDesignSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E4711D32B8DB3EB00AF0AD8 /* CoinDesignSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E4711D72B8DB3EB00AF0AD8 /* CoinDesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4711D12B8DB3EB00AF0AD8 /* CoinDesignSystem.framework */; };
 		6E4711D82B8DB3EB00AF0AD8 /* CoinDesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4711D12B8DB3EB00AF0AD8 /* CoinDesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6E4711DF2B8DB3FC00AF0AD8 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4711DE2B8DB3FC00AF0AD8 /* UIColor+.swift */; };
 		6E4711E12B8DBC4F00AF0AD8 /* KazCoinAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4711E02B8DBC4F00AF0AD8 /* KazCoinAsset.swift */; };
+		6E4711E82B8DCA1500AF0AD8 /* TrendDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4711E72B8DCA1500AF0AD8 /* TrendDTO.swift */; };
+		6E4711EA2B8DDFE100AF0AD8 /* CoinDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4711E92B8DDFE100AF0AD8 /* CoinDTO.swift */; };
+		6E4711EF2B8DE87900AF0AD8 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4711EE2B8DE87900AF0AD8 /* Trend.swift */; };
 		6EE8AF252B8DAAFF004162F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE8AF242B8DAAFF004162F3 /* AppDelegate.swift */; };
 		6EE8AF272B8DAAFF004162F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE8AF262B8DAAFF004162F3 /* SceneDelegate.swift */; };
 		6EE8AF292B8DAAFF004162F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE8AF282B8DAAFF004162F3 /* ViewController.swift */; };
@@ -49,10 +54,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6E16E5002B8DF35A00C436CF /* Coin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coin.swift; sourceTree = "<group>"; };
 		6E4711D12B8DB3EB00AF0AD8 /* CoinDesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoinDesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E4711D32B8DB3EB00AF0AD8 /* CoinDesignSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoinDesignSystem.h; sourceTree = "<group>"; };
 		6E4711DE2B8DB3FC00AF0AD8 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		6E4711E02B8DBC4F00AF0AD8 /* KazCoinAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KazCoinAsset.swift; sourceTree = "<group>"; };
+		6E4711E72B8DCA1500AF0AD8 /* TrendDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDTO.swift; sourceTree = "<group>"; };
+		6E4711E92B8DDFE100AF0AD8 /* CoinDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDTO.swift; sourceTree = "<group>"; };
+		6E4711EE2B8DE87900AF0AD8 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
 		6EE8AF212B8DAAFF004162F3 /* KazCoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KazCoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EE8AF242B8DAAFF004162F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6EE8AF262B8DAAFF004162F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,18 +83,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6E4711C52B8DB2DC00AF0AD8 /* KazUtility in Frameworks */,
-				6E4711C82B8DB2FB00AF0AD8 /* SnapKit in Frameworks */,
-				6E4711BF2B8DB2AC00AF0AD8 /* Alamofire in Frameworks */,
-				6E4711CB2B8DB30B00AF0AD8 /* Toast in Frameworks */,
+				6E16E4FF2B8DF1D800C436CF /* Kingfisher in Frameworks */,
+				6E16E4F22B8DF12200C436CF /* KazUtility in Frameworks */,
+				6E16E4F92B8DF1B600C436CF /* SnapKit in Frameworks */,
 				6E4711D72B8DB3EB00AF0AD8 /* CoinDesignSystem.framework in Frameworks */,
-				6E4711C22B8DB2C900AF0AD8 /* KazRealm in Frameworks */,
+				6E16E5042B8E2B6B00C436CF /* KazAlamofire in Frameworks */,
+				6E16E4FC2B8DF1C500C436CF /* Toast in Frameworks */,
+				6E16E4F62B8DF1A500C436CF /* KazRealm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E16E5022B8E2B6B00C436CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6E4711B72B8DB13C00AF0AD8 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +124,7 @@
 		6E4711B92B8DB13F00AF0AD8 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				6E4711E52B8DC96600AF0AD8 /* Model */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -152,12 +170,48 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		6E4711E52B8DC96600AF0AD8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6E4711ED2B8DDFF500AF0AD8 /* Realm */,
+				6E4711EC2B8DDFF200AF0AD8 /* Entity */,
+				6E4711EB2B8DDFF100AF0AD8 /* DTO */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6E4711EB2B8DDFF100AF0AD8 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				6E4711E72B8DCA1500AF0AD8 /* TrendDTO.swift */,
+				6E4711E92B8DDFE100AF0AD8 /* CoinDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		6E4711EC2B8DDFF200AF0AD8 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				6E4711EE2B8DE87900AF0AD8 /* Trend.swift */,
+				6E16E5002B8DF35A00C436CF /* Coin.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		6E4711ED2B8DDFF500AF0AD8 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
 		6EE8AF182B8DAAFF004162F3 = {
 			isa = PBXGroup;
 			children = (
 				6EE8AF232B8DAAFF004162F3 /* KazCoin */,
 				6E4711D22B8DB3EB00AF0AD8 /* CoinDesignSystem */,
 				6EE8AF222B8DAAFF004162F3 /* Products */,
+				6E16E5022B8E2B6B00C436CF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -231,11 +285,12 @@
 			);
 			name = KazCoin;
 			packageProductDependencies = (
-				6E4711BE2B8DB2AC00AF0AD8 /* Alamofire */,
-				6E4711C12B8DB2C900AF0AD8 /* KazRealm */,
-				6E4711C42B8DB2DC00AF0AD8 /* KazUtility */,
-				6E4711C72B8DB2FB00AF0AD8 /* SnapKit */,
-				6E4711CA2B8DB30B00AF0AD8 /* Toast */,
+				6E16E4F12B8DF12200C436CF /* KazUtility */,
+				6E16E4F52B8DF1A500C436CF /* KazRealm */,
+				6E16E4F82B8DF1B600C436CF /* SnapKit */,
+				6E16E4FB2B8DF1C500C436CF /* Toast */,
+				6E16E4FE2B8DF1D800C436CF /* Kingfisher */,
+				6E16E5032B8E2B6B00C436CF /* KazAlamofire */,
 			);
 			productName = KazCoin;
 			productReference = 6EE8AF212B8DAAFF004162F3 /* KazCoin.app */;
@@ -270,11 +325,12 @@
 			);
 			mainGroup = 6EE8AF182B8DAAFF004162F3;
 			packageReferences = (
-				6E4711BD2B8DB2AC00AF0AD8 /* XCRemoteSwiftPackageReference "Alamofire" */,
-				6E4711C02B8DB2C900AF0AD8 /* XCRemoteSwiftPackageReference "KazRealm" */,
-				6E4711C32B8DB2DC00AF0AD8 /* XCRemoteSwiftPackageReference "KazUtility" */,
-				6E4711C62B8DB2FB00AF0AD8 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				6E4711C92B8DB30B00AF0AD8 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				6E16E4F02B8DF12200C436CF /* XCRemoteSwiftPackageReference "KazUtility" */,
+				6E16E4F32B8DF13700C436CF /* XCRemoteSwiftPackageReference "KazAlamofire" */,
+				6E16E4F42B8DF1A500C436CF /* XCRemoteSwiftPackageReference "KazRealm" */,
+				6E16E4F72B8DF1B600C436CF /* XCRemoteSwiftPackageReference "SnapKit" */,
+				6E16E4FA2B8DF1C500C436CF /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				6E16E4FD2B8DF1D800C436CF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 6EE8AF222B8DAAFF004162F3 /* Products */;
 			projectDirPath = "";
@@ -320,8 +376,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EE8AF292B8DAAFF004162F3 /* ViewController.swift in Sources */,
+				6E4711E82B8DCA1500AF0AD8 /* TrendDTO.swift in Sources */,
+				6E4711EF2B8DE87900AF0AD8 /* Trend.swift in Sources */,
 				6EE8AF252B8DAAFF004162F3 /* AppDelegate.swift in Sources */,
+				6E4711EA2B8DDFE100AF0AD8 /* CoinDTO.swift in Sources */,
 				6EE8AF272B8DAAFF004162F3 /* SceneDelegate.swift in Sources */,
+				6E16E5012B8DF35A00C436CF /* Coin.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -550,7 +610,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -579,7 +639,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -626,15 +686,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6E4711BD2B8DB2AC00AF0AD8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		6E16E4F02B8DF12200C436CF /* XCRemoteSwiftPackageReference "KazUtility" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			repositoryURL = "https://github.com/wontaeyoung/KazUtility";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.8.1;
+				minimumVersion = 1.3.0;
 			};
 		};
-		6E4711C02B8DB2C900AF0AD8 /* XCRemoteSwiftPackageReference "KazRealm" */ = {
+		6E16E4F32B8DF13700C436CF /* XCRemoteSwiftPackageReference "KazAlamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wontaeyoung/KazAlamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		6E16E4F42B8DF1A500C436CF /* XCRemoteSwiftPackageReference "KazRealm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/wontaeyoung/KazRealm";
 			requirement = {
@@ -642,15 +710,7 @@
 				minimumVersion = 1.0.2;
 			};
 		};
-		6E4711C32B8DB2DC00AF0AD8 /* XCRemoteSwiftPackageReference "KazUtility" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/wontaeyoung/KazUtility";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.2.0;
-			};
-		};
-		6E4711C62B8DB2FB00AF0AD8 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		6E16E4F72B8DF1B600C436CF /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
 			requirement = {
@@ -658,7 +718,7 @@
 				minimumVersion = 5.7.1;
 			};
 		};
-		6E4711C92B8DB30B00AF0AD8 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+		6E16E4FA2B8DF1C500C436CF /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scalessec/Toast-Swift";
 			requirement = {
@@ -666,33 +726,46 @@
 				minimumVersion = 5.1.0;
 			};
 		};
+		6E16E4FD2B8DF1D800C436CF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6E4711BE2B8DB2AC00AF0AD8 /* Alamofire */ = {
+		6E16E4F12B8DF12200C436CF /* KazUtility */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6E4711BD2B8DB2AC00AF0AD8 /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
-		};
-		6E4711C12B8DB2C900AF0AD8 /* KazRealm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6E4711C02B8DB2C900AF0AD8 /* XCRemoteSwiftPackageReference "KazRealm" */;
-			productName = KazRealm;
-		};
-		6E4711C42B8DB2DC00AF0AD8 /* KazUtility */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6E4711C32B8DB2DC00AF0AD8 /* XCRemoteSwiftPackageReference "KazUtility" */;
+			package = 6E16E4F02B8DF12200C436CF /* XCRemoteSwiftPackageReference "KazUtility" */;
 			productName = KazUtility;
 		};
-		6E4711C72B8DB2FB00AF0AD8 /* SnapKit */ = {
+		6E16E4F52B8DF1A500C436CF /* KazRealm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6E4711C62B8DB2FB00AF0AD8 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = 6E16E4F42B8DF1A500C436CF /* XCRemoteSwiftPackageReference "KazRealm" */;
+			productName = KazRealm;
+		};
+		6E16E4F82B8DF1B600C436CF /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6E16E4F72B8DF1B600C436CF /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
 		};
-		6E4711CA2B8DB30B00AF0AD8 /* Toast */ = {
+		6E16E4FB2B8DF1C500C436CF /* Toast */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6E4711C92B8DB30B00AF0AD8 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			package = 6E16E4FA2B8DF1C500C436CF /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		6E16E4FE2B8DF1D800C436CF /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6E16E4FD2B8DF1D800C436CF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		6E16E5032B8E2B6B00C436CF /* KazAlamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6E16E4F32B8DF13700C436CF /* XCRemoteSwiftPackageReference "KazAlamofire" */;
+			productName = KazAlamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
