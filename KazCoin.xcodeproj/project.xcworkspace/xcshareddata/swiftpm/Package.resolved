@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "kazalamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/wontaeyoung/KazAlamofire",
+      "state" : {
+        "revision" : "1405b14dc366bc0ed0d28d206a7451dda224d51c",
+        "version" : "1.0.0"
+      }
+    },
+    {
       "identity" : "kazrealm",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/wontaeyoung/KazRealm",
@@ -23,8 +32,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/wontaeyoung/KazUtility",
       "state" : {
-        "revision" : "fc055f85998e814ed90984a787f36c18e9a073d1",
-        "version" : "1.2.0"
+        "revision" : "4ff02c7306b3354591f0b571585ffea5a11a807e",
+        "version" : "1.3.0"
+      }
+    },
+    {
+      "identity" : "kingfisher",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/onevcat/Kingfisher",
+      "state" : {
+        "revision" : "5b92f029fab2cce44386d28588098b5be0824ef5",
+        "version" : "7.11.0"
       }
     },
     {
