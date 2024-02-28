@@ -11,7 +11,7 @@ final class LiveTrendRepository: TrendRepository {
   
   func fetch() async throws -> Trend {
     return try await AFManager.shared
-      .callRequest(responseType: TrendDTO.self, router: SearchRouter.trend)
+      .callRequest(responseType: TrendDTO.self, router: CoinRouter.trend)
       .toEntity()
   }
 }

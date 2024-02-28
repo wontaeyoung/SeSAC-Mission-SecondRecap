@@ -10,23 +10,37 @@ import Alamofire
 
 enum CoinRouter: AFRouter {
   
+  case trend
+  case coin(query: String)
   case market(idList: [String])
   
   var method: HTTPMethod {
     switch self {
+      case .trend:
+        return .get
+        
+      case .coin:
+        return .get
+        
       case .market:
         return .get
     }
   }
   
   var baseURL: String {
-    return "https://api.coingecko.com/api/v3/coins"
+    return "https://api.coingecko.com/api/v3"
   }
   
   var path: String {
     switch self {
+      case .trend:
+        return "search/trending"
+        
+      case .coin:
+        return "search"
+        
       case .market:
-        return "markets"
+        return "coins/markets"
     }
   }
   
@@ -36,6 +50,12 @@ enum CoinRouter: AFRouter {
   
   var parameters: Parameters? {
     switch self {
+      case .trend:
+        return nil
+        
+      case .coin(let query):
+        return [ParameterKey.query.key: query]
+        
       case .market(let idList):
         return [
           ParameterKey.vs_currency.key: "krw",
@@ -45,6 +65,7 @@ enum CoinRouter: AFRouter {
   }
   
   enum ParameterKey: String {
+    case query
     case vs_currency
     case ids
     
@@ -53,4 +74,3 @@ enum CoinRouter: AFRouter {
     }
   }
 }
-

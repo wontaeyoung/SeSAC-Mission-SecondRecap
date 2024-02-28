@@ -9,9 +9,10 @@ import KazAlamofire
 
 final class LiveCoinRepository: CoinRepository {
   
+  // MARK: - Method
   func fetch(by searchText: String) async throws -> [Coin] {
     return try await AFManager.shared
-      .callRequest(responseType: CoinResponseDTO.self, router: SearchRouter.coin(query: searchText))
+      .callRequest(responseType: CoinResponseDTO.self, router: CoinRouter.coin(query: searchText))
       .coins
       .map { $0.toEntity() }
   }
