@@ -5,6 +5,7 @@
 //  Created by 원태영 on 2/28/24.
 //
 
+import Foundation
 import KazUtility
 
 struct NFT: Entity {
