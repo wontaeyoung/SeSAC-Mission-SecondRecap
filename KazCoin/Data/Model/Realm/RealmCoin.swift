@@ -13,7 +13,14 @@ final class RealmCoin: Object, RealmModel {
   enum Column: String {
     
     case id
+    case coinID
   }
   
   @Persisted(primaryKey: true) var id: ObjectId
+  @Persisted(indexed: true) var coinID: String
+  
+  convenience init(id: String) {
+    self.init()
+    self.coinID = id
+  }
 }
