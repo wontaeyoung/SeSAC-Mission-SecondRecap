@@ -7,6 +7,7 @@
 
 import UIKit
 import KazUtility
+import KazRealm
 
 final class SearchCoordinator: Coordinator {
   
@@ -27,12 +28,15 @@ final class SearchCoordinator: Coordinator {
   }
   
   func showSearchView() {
-    let repository = LiveCoinRepository()
-    let viewModel = SearchViewModel(repository: repository)
+    let service = LiveRealmService()
+    let interestRepository = LiveInterestRepository(service: service)
+    let coinRepository = LiveCoinRepository()
+    let viewModel = SearchViewModel(coinRepository: coinRepository, interestRepository: interestRepository)
     let viewController = SearchViewController(viewModel: viewModel)
       .navigationTitle(with: "Search", displayMode: .always)
       .hideBackTitle()
     
+    viewModel.coordinator = self
     self.push(viewController)
   }
 }

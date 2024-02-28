@@ -31,7 +31,14 @@
 		6E16E5332B8EBA7000C436CF /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5322B8EBA7000C436CF /* SearchViewModel.swift */; };
 		6E16E5452B8ED8ED00C436CF /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5442B8ED8ED00C436CF /* SearchTableViewCell.swift */; };
 		6E16E5572B8F24B700C436CF /* CoinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5562B8F24B700C436CF /* CoinRouter.swift */; };
-		6E16E5592B8F24BC00C436CF /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5582B8F24BC00C436CF /* SearchRouter.swift */; };
+		6E16E55B2B8F31CE00C436CF /* RealmCoin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E55A2B8F31CE00C436CF /* RealmCoin.swift */; };
+		6E16E55D2B8F33F600C436CF /* RealmError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E55C2B8F33F500C436CF /* RealmError+.swift */; };
+		6E16E55F2B8F43B300C436CF /* InterestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E55E2B8F43B300C436CF /* InterestRepository.swift */; };
+		6E16E5612B8F43FE00C436CF /* LiveInterestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5602B8F43FE00C436CF /* LiveInterestRepository.swift */; };
+		6E16E5632B8F44D700C436CF /* NFTDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5622B8F44D700C436CF /* NFTDTO.swift */; };
+		6E16E5652B8F44F200C436CF /* NFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5642B8F44F200C436CF /* NFT.swift */; };
+		6E16E5672B8F457B00C436CF /* CoinMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5662B8F457B00C436CF /* CoinMapper.swift */; };
+		6E16E56A2B8F536900C436CF /* CoinError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5692B8F536900C436CF /* CoinError.swift */; };
 		6E4711D42B8DB3EB00AF0AD8 /* CoinDesignSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E4711D32B8DB3EB00AF0AD8 /* CoinDesignSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E4711D72B8DB3EB00AF0AD8 /* CoinDesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4711D12B8DB3EB00AF0AD8 /* CoinDesignSystem.framework */; };
 		6E4711D82B8DB3EB00AF0AD8 /* CoinDesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4711D12B8DB3EB00AF0AD8 /* CoinDesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -90,7 +97,14 @@
 		6E16E5322B8EBA7000C436CF /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		6E16E5442B8ED8ED00C436CF /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		6E16E5562B8F24B700C436CF /* CoinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRouter.swift; sourceTree = "<group>"; };
-		6E16E5582B8F24BC00C436CF /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		6E16E55A2B8F31CE00C436CF /* RealmCoin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoin.swift; sourceTree = "<group>"; };
+		6E16E55C2B8F33F500C436CF /* RealmError+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealmError+.swift"; sourceTree = "<group>"; };
+		6E16E55E2B8F43B300C436CF /* InterestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestRepository.swift; sourceTree = "<group>"; };
+		6E16E5602B8F43FE00C436CF /* LiveInterestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveInterestRepository.swift; sourceTree = "<group>"; };
+		6E16E5622B8F44D700C436CF /* NFTDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTDTO.swift; sourceTree = "<group>"; };
+		6E16E5642B8F44F200C436CF /* NFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFT.swift; sourceTree = "<group>"; };
+		6E16E5662B8F457B00C436CF /* CoinMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinMapper.swift; sourceTree = "<group>"; };
+		6E16E5692B8F536900C436CF /* CoinError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinError.swift; sourceTree = "<group>"; };
 		6E4711D12B8DB3EB00AF0AD8 /* CoinDesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoinDesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E4711D32B8DB3EB00AF0AD8 /* CoinDesignSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoinDesignSystem.h; sourceTree = "<group>"; };
 		6E4711DE2B8DB3FC00AF0AD8 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
@@ -144,6 +158,7 @@
 			children = (
 				6E16E5092B8E363200C436CF /* LiveCoinRepository.swift */,
 				6E16E50E2B8E3C1C00C436CF /* LiveTrendRepository.swift */,
+				6E16E5602B8F43FE00C436CF /* LiveInterestRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -153,6 +168,7 @@
 			children = (
 				6E16E5072B8E35F300C436CF /* CoinRepository.swift */,
 				6E16E5102B8E3C8900C436CF /* TrendRepository.swift */,
+				6E16E55E2B8F43B300C436CF /* InterestRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -162,6 +178,7 @@
 			children = (
 				6E16E50C2B8E371100C436CF /* AFError+.swift */,
 				6E16E52E2B8EB6EC00C436CF /* UINavigationController+.swift */,
+				6E16E55C2B8F33F500C436CF /* RealmError+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -273,9 +290,16 @@
 			isa = PBXGroup;
 			children = (
 				6E16E5562B8F24B700C436CF /* CoinRouter.swift */,
-				6E16E5582B8F24BC00C436CF /* SearchRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		6E16E5682B8F535E00C436CF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				6E16E5692B8F536900C436CF /* CoinError.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		6E4711B72B8DB13C00AF0AD8 /* App */ = {
@@ -310,6 +334,7 @@
 		6E4711BA2B8DB14700AF0AD8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				6E16E5682B8F535E00C436CF /* Common */,
 				6E16E5152B8E3F6A00C436CF /* MainTabBar */,
 				6EE8AF282B8DAAFF004162F3 /* ViewController.swift */,
 			);
@@ -365,6 +390,7 @@
 			isa = PBXGroup;
 			children = (
 				6E4711E72B8DCA1500AF0AD8 /* TrendDTO.swift */,
+				6E16E5622B8F44D700C436CF /* NFTDTO.swift */,
 				6E4711E92B8DDFE100AF0AD8 /* CoinDTO.swift */,
 			);
 			path = DTO;
@@ -375,6 +401,7 @@
 			children = (
 				6E4711EE2B8DE87900AF0AD8 /* Trend.swift */,
 				6E16E5002B8DF35A00C436CF /* Coin.swift */,
+				6E16E5642B8F44F200C436CF /* NFT.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -382,6 +409,8 @@
 		6E4711ED2B8DDFF500AF0AD8 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
+				6E16E55A2B8F31CE00C436CF /* RealmCoin.swift */,
+				6E16E5662B8F457B00C436CF /* CoinMapper.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -558,14 +587,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E16E5332B8EBA7000C436CF /* SearchViewModel.swift in Sources */,
-				6E16E5592B8F24BC00C436CF /* SearchRouter.swift in Sources */,
 				6E16E5082B8E35F300C436CF /* CoinRepository.swift in Sources */,
+				6E16E5652B8F44F200C436CF /* NFT.swift in Sources */,
 				6E16E52F2B8EB6EC00C436CF /* UINavigationController+.swift in Sources */,
 				6E16E5112B8E3C8900C436CF /* TrendRepository.swift in Sources */,
 				6E16E5222B8E429600C436CF /* TrendCoordinator.swift in Sources */,
+				6E16E5612B8F43FE00C436CF /* LiveInterestRepository.swift in Sources */,
 				6E16E5142B8E3E7900C436CF /* AppCoordinator.swift in Sources */,
 				6EE8AF292B8DAAFF004162F3 /* ViewController.swift in Sources */,
 				6E16E50A2B8E363200C436CF /* LiveCoinRepository.swift in Sources */,
+				6E16E55D2B8F33F600C436CF /* RealmError+.swift in Sources */,
 				6E16E5452B8ED8ED00C436CF /* SearchTableViewCell.swift in Sources */,
 				6E16E51A2B8E3FCD00C436CF /* MainTabBarPage.swift in Sources */,
 				6E16E50F2B8E3C1C00C436CF /* LiveTrendRepository.swift in Sources */,
@@ -573,7 +604,10 @@
 				6E4711EF2B8DE87900AF0AD8 /* Trend.swift in Sources */,
 				6E16E50D2B8E371100C436CF /* AFError+.swift in Sources */,
 				6E16E5182B8E3FA800C436CF /* MainTabBarCoordinator.swift in Sources */,
+				6E16E5632B8F44D700C436CF /* NFTDTO.swift in Sources */,
+				6E16E55B2B8F31CE00C436CF /* RealmCoin.swift in Sources */,
 				6EE8AF252B8DAAFF004162F3 /* AppDelegate.swift in Sources */,
+				6E16E5672B8F457B00C436CF /* CoinMapper.swift in Sources */,
 				6E4711EA2B8DDFE100AF0AD8 /* CoinDTO.swift in Sources */,
 				6E16E5312B8EBA6100C436CF /* SearchViewController.swift in Sources */,
 				6E16E52B2B8E432D00C436CF /* UserCoordinator.swift in Sources */,
@@ -581,7 +615,9 @@
 				6E16E5252B8E42EF00C436CF /* SearchCoordinator.swift in Sources */,
 				6E16E5572B8F24B700C436CF /* CoinRouter.swift in Sources */,
 				6E16E5012B8DF35A00C436CF /* Coin.swift in Sources */,
+				6E16E56A2B8F536900C436CF /* CoinError.swift in Sources */,
 				6E16E5282B8E430800C436CF /* PortfolioCoordinator.swift in Sources */,
+				6E16E55F2B8F43B300C436CF /* InterestRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
