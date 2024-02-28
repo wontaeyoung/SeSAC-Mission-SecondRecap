@@ -5,10 +5,8 @@
 //  Created by 원태영 on 2/28/24.
 //
 
-import KazAlamofire
-
 protocol CoinRepository {
   
-  func searchFetch(router: AFRouter) async throws -> [Coin]
-  func marketFetch(router: AFRouter) async throws -> [Coin]
+  func searchFetch(by searchText: String) async throws -> [Coin]
+  func marketFetch(from idList: [String]) async throws -> [Coin]
 }

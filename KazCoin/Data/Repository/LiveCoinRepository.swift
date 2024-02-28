@@ -9,16 +9,16 @@ import KazAlamofire
 
 final class LiveCoinRepository: CoinRepository {
   
-  func searchFetch(router: AFRouter) async throws -> [Coin] {
+  func searchFetch(by searchText: String) async throws -> [Coin] {
     return try await AFManager.shared
-      .callRequest(responseType: CoinResponseDTO.self, router: router)
+      .callRequest(responseType: CoinResponseDTO.self, router: SearchRouter.coin(query: searchText))
       .coins
       .map { $0.toEntity() }
   }
   
-  func marketFetch(router: AFRouter) async throws -> [Coin] {
+  func marketFetch(from idList: [String]) async throws -> [Coin] {
     return try await AFManager.shared
-      .callRequest(responseType: [CoinDTO].self, router: router)
+      .callRequest(responseType: [CoinDTO].self, router: CoinRouter.market(idList: idList))
       .map { $0.toEntity() }
   }
 }
