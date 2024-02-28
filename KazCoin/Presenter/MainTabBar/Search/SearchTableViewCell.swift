@@ -28,7 +28,12 @@ final class SearchTableViewCell: BaseTableViewCell {
     $0.textColor = KazCoinAsset.Color.symbolName
   }
   
-  private let interestButton = UIButton()
+  private let interestButton = UIButton().configured {
+    $0.configuration = .plain()
+  }
+  
+  // MARK: - Property
+  var interestButtonTapAction: (() -> Void)?
   
   // MARK: - Life Cycle
   override func setHierarchy() {
@@ -69,7 +74,13 @@ final class SearchTableViewCell: BaseTableViewCell {
     interestButton.configuration?.image = interested ? .btnStarFill : .btnStar
   }
   
-  func updateTapEvent(_ selector: Selector, target: Any) {
-    interestButton.addTarget(target, action: selector, for: .touchUpInside)
+  func updateTapEvent(_ action: @escaping () -> Void) {
+    self.interestButtonTapAction = action
+    self.interestButton.addTarget(self, action: #selector(interestButtonTapped), for: .touchUpInside)
+  }
+  
+  // MARK: - Selector
+  @objc private func interestButtonTapped() {
+    self.interestButtonTapAction?()
   }
 }
