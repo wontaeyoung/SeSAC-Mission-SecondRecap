@@ -108,7 +108,7 @@ extension SearchViewController: TableControllable {
     let item: Coin = viewModel.itemAt(indexPath)
     let interested: Bool = viewModel.interestedAt(indexPath)
     
-    cell.updateUI(with: item, interested: interested)
+    cell.updateUI(with: item, interested: interested, searchText: viewModel.currentSearchText)
     cell.updateTapEvent { [weak self] in
       guard let self else { return }
       

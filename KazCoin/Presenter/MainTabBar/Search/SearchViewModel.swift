@@ -30,6 +30,7 @@ final class SearchViewModel: ViewModel {
   weak var coordinator: SearchCoordinator?
   private let coinRepository: any CoinRepository
   private let interestRepository: any InterestRepository
+  var currentSearchText: String = ""
   
   // MARK: - Initializer
   init(coinRepository: any CoinRepository, interestRepository: any InterestRepository) {
@@ -57,6 +58,7 @@ final class SearchViewModel: ViewModel {
         do {
           let coins = try await coinRepository.fetch(by: text)
           output.coins.onNext(coins)
+          currentSearchText = text
         } catch {
           LogManager.shared.log(with: error, to: .network)
           coordinator?.showErrorAlert(error: error)
