@@ -12,12 +12,10 @@ struct CoinResponseDTO: DTO {
   let coins: [CoinDTO]
   
   func toEntity() -> CoinResponse {
-    
     return CoinResponse(coins: coins.map { $0.toEntity() })
   }
   
   static var defaultValue: CoinResponseDTO {
-    
     return CoinResponseDTO(coins: [.defaultValue])
   }
 }
@@ -45,8 +43,7 @@ struct CoinDTO: DTO {
     case id
     case name
     case symbol
-    case thumb
-    case image
+    case large, image, small, thumb
     case current_price
     case market_cap_rank
     case high_24h
@@ -80,10 +77,15 @@ struct CoinDTO: DTO {
     self.sparkline_in_7d = try container.decodeWithDefaultValue(SparklineDTO.self, forKey: .sparkline_in_7d).price
     self.priceUSD = try container.decodeWithDefaultValue(TrendCoinPriceDTO.self, forKey: .data).price
     
-    if let thumb = try container.decodeIfPresent(String.self, forKey: .thumb) {
-      self.thumb = thumb
+    
+    if let large = try container.decodeIfPresent(String.self, forKey: .large) {
+      self.thumb = large
+    } else if let small = try container.decodeIfPresent(String.self, forKey: .small) {
+      self.thumb = small
+    } else if let image = try container.decodeIfPresent(String.self, forKey: .image) {
+      self.thumb = image
     } else {
-      self.thumb = try container.decodeWithDefaultValue(String.self, forKey: .image)
+      self.thumb = try container.decodeWithDefaultValue(String.self, forKey: .thumb)
     }
   }
   
@@ -173,7 +175,6 @@ struct SparklineDTO: DefaultValueProvidable {
   let price: [Double]
   
   static var defaultValue: SparklineDTO {
-    
     return SparklineDTO(price: [.defaultValue])
   }
 }
@@ -183,7 +184,6 @@ struct TrendCoinPriceDTO: DefaultValueProvidable {
   let price: String  // 코인 현재가
   
   static var defaultValue: TrendCoinPriceDTO {
-    
     return TrendCoinPriceDTO(price: .defaultValue)
   }
 }
