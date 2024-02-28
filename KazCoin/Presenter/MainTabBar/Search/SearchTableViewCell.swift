@@ -28,11 +28,7 @@ final class SearchTableViewCell: BaseTableViewCell {
     $0.textColor = KazCoinAsset.Color.symbolName
   }
   
-  private let interestButton = UIButton().configured {
-    $0.configuration = .plain().configured {
-      $0.image = .btnStar
-    }
-  }
+  private let interestButton = UIButton()
   
   // MARK: - Life Cycle
   override func setHierarchy() {
@@ -61,6 +57,7 @@ final class SearchTableViewCell: BaseTableViewCell {
       make.leading.equalTo(nameLabel.snp.trailing).offset(8)
       make.trailing.equalTo(contentView).inset(16)
       make.centerY.equalTo(contentView)
+      make.size.equalTo(44)
     }
   }
   
