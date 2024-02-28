@@ -19,6 +19,19 @@
 		6E16E50D2B8E371100C436CF /* AFError+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E50C2B8E371100C436CF /* AFError+.swift */; };
 		6E16E50F2B8E3C1C00C436CF /* LiveTrendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E50E2B8E3C1C00C436CF /* LiveTrendRepository.swift */; };
 		6E16E5112B8E3C8900C436CF /* TrendRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5102B8E3C8900C436CF /* TrendRepository.swift */; };
+		6E16E5142B8E3E7900C436CF /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5132B8E3E7900C436CF /* AppCoordinator.swift */; };
+		6E16E5182B8E3FA800C436CF /* MainTabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5172B8E3FA800C436CF /* MainTabBarCoordinator.swift */; };
+		6E16E51A2B8E3FCD00C436CF /* MainTabBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5192B8E3FCD00C436CF /* MainTabBarPage.swift */; };
+		6E16E5222B8E429600C436CF /* TrendCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5212B8E429600C436CF /* TrendCoordinator.swift */; };
+		6E16E5252B8E42EF00C436CF /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5242B8E42EF00C436CF /* SearchCoordinator.swift */; };
+		6E16E5282B8E430800C436CF /* PortfolioCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5272B8E430800C436CF /* PortfolioCoordinator.swift */; };
+		6E16E52B2B8E432D00C436CF /* UserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E52A2B8E432D00C436CF /* UserCoordinator.swift */; };
+		6E16E52F2B8EB6EC00C436CF /* UINavigationController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E52E2B8EB6EC00C436CF /* UINavigationController+.swift */; };
+		6E16E5312B8EBA6100C436CF /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5302B8EBA6100C436CF /* SearchViewController.swift */; };
+		6E16E5332B8EBA7000C436CF /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5322B8EBA7000C436CF /* SearchViewModel.swift */; };
+		6E16E5452B8ED8ED00C436CF /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5442B8ED8ED00C436CF /* SearchTableViewCell.swift */; };
+		6E16E5572B8F24B700C436CF /* CoinRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5562B8F24B700C436CF /* CoinRouter.swift */; };
+		6E16E5592B8F24BC00C436CF /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E16E5582B8F24BC00C436CF /* SearchRouter.swift */; };
 		6E4711D42B8DB3EB00AF0AD8 /* CoinDesignSystem.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E4711D32B8DB3EB00AF0AD8 /* CoinDesignSystem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6E4711D72B8DB3EB00AF0AD8 /* CoinDesignSystem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4711D12B8DB3EB00AF0AD8 /* CoinDesignSystem.framework */; };
 		6E4711D82B8DB3EB00AF0AD8 /* CoinDesignSystem.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6E4711D12B8DB3EB00AF0AD8 /* CoinDesignSystem.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -65,6 +78,19 @@
 		6E16E50C2B8E371100C436CF /* AFError+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AFError+.swift"; sourceTree = "<group>"; };
 		6E16E50E2B8E3C1C00C436CF /* LiveTrendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveTrendRepository.swift; sourceTree = "<group>"; };
 		6E16E5102B8E3C8900C436CF /* TrendRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendRepository.swift; sourceTree = "<group>"; };
+		6E16E5132B8E3E7900C436CF /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		6E16E5172B8E3FA800C436CF /* MainTabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarCoordinator.swift; sourceTree = "<group>"; };
+		6E16E5192B8E3FCD00C436CF /* MainTabBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarPage.swift; sourceTree = "<group>"; };
+		6E16E5212B8E429600C436CF /* TrendCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendCoordinator.swift; sourceTree = "<group>"; };
+		6E16E5242B8E42EF00C436CF /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		6E16E5272B8E430800C436CF /* PortfolioCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCoordinator.swift; sourceTree = "<group>"; };
+		6E16E52A2B8E432D00C436CF /* UserCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoordinator.swift; sourceTree = "<group>"; };
+		6E16E52E2B8EB6EC00C436CF /* UINavigationController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+.swift"; sourceTree = "<group>"; };
+		6E16E5302B8EBA6100C436CF /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		6E16E5322B8EBA7000C436CF /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		6E16E5442B8ED8ED00C436CF /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		6E16E5562B8F24B700C436CF /* CoinRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinRouter.swift; sourceTree = "<group>"; };
+		6E16E5582B8F24BC00C436CF /* SearchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		6E4711D12B8DB3EB00AF0AD8 /* CoinDesignSystem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoinDesignSystem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E4711D32B8DB3EB00AF0AD8 /* CoinDesignSystem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoinDesignSystem.h; sourceTree = "<group>"; };
 		6E4711DE2B8DB3FC00AF0AD8 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
@@ -135,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				6E16E50C2B8E371100C436CF /* AFError+.swift */,
+				6E16E52E2B8EB6EC00C436CF /* UINavigationController+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -147,12 +174,117 @@
 			path = Domain;
 			sourceTree = "<group>";
 		};
+		6E16E5152B8E3F6A00C436CF /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				6E16E5162B8E3F9D00C436CF /* Coordinator */,
+				6E16E51B2B8E41BD00C436CF /* Trend */,
+				6E16E51C2B8E41C000C436CF /* Search */,
+				6E16E51D2B8E41C800C436CF /* Portfolio */,
+				6E16E51E2B8E41D200C436CF /* User */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		6E16E5162B8E3F9D00C436CF /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6E16E5172B8E3FA800C436CF /* MainTabBarCoordinator.swift */,
+				6E16E5192B8E3FCD00C436CF /* MainTabBarPage.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		6E16E51B2B8E41BD00C436CF /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				6E16E51F2B8E41E400C436CF /* Coordinator */,
+			);
+			path = Trend;
+			sourceTree = "<group>";
+		};
+		6E16E51C2B8E41C000C436CF /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				6E16E5232B8E42E700C436CF /* Coordinator */,
+				6E16E5302B8EBA6100C436CF /* SearchViewController.swift */,
+				6E16E5322B8EBA7000C436CF /* SearchViewModel.swift */,
+				6E16E5442B8ED8ED00C436CF /* SearchTableViewCell.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		6E16E51D2B8E41C800C436CF /* Portfolio */ = {
+			isa = PBXGroup;
+			children = (
+				6E16E5262B8E42F900C436CF /* Coordinator */,
+			);
+			path = Portfolio;
+			sourceTree = "<group>";
+		};
+		6E16E51E2B8E41D200C436CF /* User */ = {
+			isa = PBXGroup;
+			children = (
+				6E16E5292B8E432300C436CF /* Coordinator */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		6E16E51F2B8E41E400C436CF /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6E16E5212B8E429600C436CF /* TrendCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		6E16E5232B8E42E700C436CF /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6E16E5242B8E42EF00C436CF /* SearchCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		6E16E5262B8E42F900C436CF /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6E16E5272B8E430800C436CF /* PortfolioCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		6E16E5292B8E432300C436CF /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				6E16E52A2B8E432D00C436CF /* UserCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		6E16E54C2B8EDE7A00C436CF /* Temp */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Temp;
+			sourceTree = "<group>";
+		};
+		6E16E5552B8F247200C436CF /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				6E16E5562B8F24B700C436CF /* CoinRouter.swift */,
+				6E16E5582B8F24BC00C436CF /* SearchRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		6E4711B72B8DB13C00AF0AD8 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				6EE8AF242B8DAAFF004162F3 /* AppDelegate.swift */,
 				6EE8AF262B8DAAFF004162F3 /* SceneDelegate.swift */,
 				6EE8AF2F2B8DAB01004162F3 /* LaunchScreen.storyboard */,
+				6E16E5132B8E3E7900C436CF /* AppCoordinator.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -168,6 +300,7 @@
 		6E4711B92B8DB13F00AF0AD8 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				6E16E5552B8F247200C436CF /* Router */,
 				6E16E5052B8E35CB00C436CF /* Repository */,
 				6E4711E52B8DC96600AF0AD8 /* Model */,
 			);
@@ -177,6 +310,7 @@
 		6E4711BA2B8DB14700AF0AD8 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				6E16E5152B8E3F6A00C436CF /* MainTabBar */,
 				6EE8AF282B8DAAFF004162F3 /* ViewController.swift */,
 			);
 			path = Presenter;
@@ -193,6 +327,7 @@
 		6E4711BC2B8DB14D00AF0AD8 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				6E16E54C2B8EDE7A00C436CF /* Temp */,
 				6E16E50B2B8E370A00C436CF /* Extension */,
 			);
 			path = Utility;
@@ -422,18 +557,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E16E5332B8EBA7000C436CF /* SearchViewModel.swift in Sources */,
+				6E16E5592B8F24BC00C436CF /* SearchRouter.swift in Sources */,
 				6E16E5082B8E35F300C436CF /* CoinRepository.swift in Sources */,
+				6E16E52F2B8EB6EC00C436CF /* UINavigationController+.swift in Sources */,
 				6E16E5112B8E3C8900C436CF /* TrendRepository.swift in Sources */,
+				6E16E5222B8E429600C436CF /* TrendCoordinator.swift in Sources */,
+				6E16E5142B8E3E7900C436CF /* AppCoordinator.swift in Sources */,
 				6EE8AF292B8DAAFF004162F3 /* ViewController.swift in Sources */,
 				6E16E50A2B8E363200C436CF /* LiveCoinRepository.swift in Sources */,
+				6E16E5452B8ED8ED00C436CF /* SearchTableViewCell.swift in Sources */,
+				6E16E51A2B8E3FCD00C436CF /* MainTabBarPage.swift in Sources */,
 				6E16E50F2B8E3C1C00C436CF /* LiveTrendRepository.swift in Sources */,
 				6E4711E82B8DCA1500AF0AD8 /* TrendDTO.swift in Sources */,
 				6E4711EF2B8DE87900AF0AD8 /* Trend.swift in Sources */,
 				6E16E50D2B8E371100C436CF /* AFError+.swift in Sources */,
+				6E16E5182B8E3FA800C436CF /* MainTabBarCoordinator.swift in Sources */,
 				6EE8AF252B8DAAFF004162F3 /* AppDelegate.swift in Sources */,
 				6E4711EA2B8DDFE100AF0AD8 /* CoinDTO.swift in Sources */,
+				6E16E5312B8EBA6100C436CF /* SearchViewController.swift in Sources */,
+				6E16E52B2B8E432D00C436CF /* UserCoordinator.swift in Sources */,
 				6EE8AF272B8DAAFF004162F3 /* SceneDelegate.swift in Sources */,
+				6E16E5252B8E42EF00C436CF /* SearchCoordinator.swift in Sources */,
+				6E16E5572B8F24B700C436CF /* CoinRouter.swift in Sources */,
 				6E16E5012B8DF35A00C436CF /* Coin.swift in Sources */,
+				6E16E5282B8E430800C436CF /* PortfolioCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +622,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -509,6 +658,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
