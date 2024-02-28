@@ -71,18 +71,19 @@ final class SearchViewController: BaseViewController, ViewModelController {
   }
   
   override func bind() {
+    viewModel.input.viewDidLoadEvent.onNext(())
+    
+    viewModel.output.interestCoins.subscribe { [weak self] _ in
+      guard let self else { return }
+      
+      tableView.reloadData()
+    }
+    
     viewModel.output.coins.subscribe { [weak self] _ in
       guard let self else { return }
       
       tableView.reloadData()
     }
-  }
-  
-  // MARK: - Method
-  
-  // MARK: - Selector
-  @objc private func interestButtonTapped() {
-    print(#function)
   }
 }
 
@@ -105,9 +106,14 @@ extension SearchViewController: TableControllable {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
     let item: Coin = viewModel.itemAt(indexPath)
+    let interested: Bool = viewModel.interestedAt(indexPath)
     
-    cell.updateUI(with: item, interested: .random())
-    cell.updateTapEvent(#selector(interestButtonTapped), target: self)
+    cell.updateUI(with: item, interested: interested)
+    cell.updateTapEvent { [weak self] in
+      guard let self else { return }
+      
+      viewModel.input.interestButtonTapEvent.onNext(indexPath)
+    }
     
     return cell
   }
