@@ -67,9 +67,9 @@ final class SearchTableViewCell: BaseTableViewCell {
   }
   
   // MARK: - Method
-  func updateUI(with item: Coin, interested: Bool) {
+  func updateUI(with item: Coin, interested: Bool, searchText: String) {
     iconImageView.kf.setImage(with: item.iconURL)
-    nameLabel.text = item.name
+    nameLabel.attributedText = item.name.colorAttributed(in: searchText, color: KazCoinAsset.Color.brand)
     symbolLabel.text = item.symbol
     interestButton.configuration?.image = interested ? .btnStarFill : .btnStar
   }
