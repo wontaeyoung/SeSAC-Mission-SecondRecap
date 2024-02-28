@@ -7,6 +7,6 @@
 
 protocol CoinRepository {
   
-  func searchFetch(by searchText: String) async throws -> [Coin]
-  func marketFetch(from idList: [String]) async throws -> [Coin]
+  func fetch(by searchText: String) async throws -> [Coin]
+  func fetch(from idList: [String]) async throws -> [Coin]
 }

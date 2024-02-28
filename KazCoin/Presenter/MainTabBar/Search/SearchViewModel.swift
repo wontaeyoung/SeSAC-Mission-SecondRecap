@@ -42,7 +42,7 @@ final class SearchViewModel: ViewModel {
         guard let self else { return }
         
         do {
-          let coins = try await repository.searchFetch(by: text)
+          let coins = try await repository.fetch(by: text)
           output.coins.onNext(coins)
         } catch {
           guard let error = error as? AppError else { return }
