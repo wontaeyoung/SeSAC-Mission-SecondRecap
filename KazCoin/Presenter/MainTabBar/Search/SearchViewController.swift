@@ -97,7 +97,7 @@ final class SearchViewController: BaseViewController, ViewModelController {
     viewModel.output.interestToast.subscribe { [weak self] message in
       guard let self else { return }
       
-      view.makeToast(message, duration: 1.0, title: "즐겨찾기 설정")
+      view.makeToast(message, duration: 1.0, position: .center, title: "즐겨찾기 설정")
     }
     
     viewModel.output.loadingIndicatorToggle.subscribe { [weak self] isOn in
