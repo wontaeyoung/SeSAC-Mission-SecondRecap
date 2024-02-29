@@ -12,7 +12,7 @@ import SnapKit
 import Kingfisher
 import Toast
 
-final class ChartViewController: BaseViewController {
+final class ChartViewController: BaseViewController, ViewModelController {
   
   // MARK: - UI
   private let iconImageView = UIImageView().configured {
@@ -90,10 +90,14 @@ final class ChartViewController: BaseViewController {
   }
   
   // MARK: - Property
-  
+  let viewModel: ChartViewModel
   
   // MARK: - Initializer
-  
+  init(viewModel: ChartViewModel) {
+    self.viewModel = viewModel
+    
+    super.init()
+  }
   
   // MARK: - Life Cycle
   override func setHierarchy() {
@@ -198,8 +202,32 @@ final class ChartViewController: BaseViewController {
   }
   
   override func bind() {
-    let coin = CoinDTO.defaultValue.toEntity()
-    updateUI(with: coin)
+    viewModel.output.coin.subscribe { [weak self] coin in
+      guard let self else { return }
+      guard let coin else { return }
+      
+      updateUI(with: coin)
+    }
+    
+    viewModel.output.interestToggle.subscribe { [weak self] interest in
+      guard let self else { return }
+      guard let interest else { return }
+      
+      updateInterestButton(interest)
+    }
+    
+    viewModel.output.loadingIndicatorToggle.subscribe { [weak self] isOn in
+      guard let self else { return }
+      guard let isOn else { return }
+      
+      if isOn {
+        view.makeToastActivity(.center)
+      } else {
+        view.hideToastActivity()
+      }
+    }
+    
+    viewModel.input.viewDidLoadEvent.onNext(())
   }
   
   // MARK: - Method
