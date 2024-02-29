@@ -19,17 +19,17 @@ final class PortfolioCollectionViewCell: BaseCollectionViewCell {
   }
   
   private let nameLabel = UILabel().configured {
-    $0.font = .systemFont(ofSize: 15, weight: .semibold)
+    $0.font = .systemFont(ofSize: 17, weight: .bold)
     $0.textColor = KazCoinAsset.Color.primaryText
   }
   
   private let symbolLabel = UILabel().configured {
-    $0.font = .systemFont(ofSize: 13, weight: .regular)
+    $0.font = .systemFont(ofSize: 13, weight: .semibold)
     $0.textColor = KazCoinAsset.Color.symbolName
   }
   
   private let priceLabel = UILabel().configured {
-    $0.font = .systemFont(ofSize: 15, weight: .semibold)
+    $0.font = .systemFont(ofSize: 17, weight: .bold)
     $0.textColor = KazCoinAsset.Color.primaryText
     $0.textAlignment = .right
   }
@@ -73,7 +73,7 @@ final class PortfolioCollectionViewCell: BaseCollectionViewCell {
     
     priceLabel.snp.makeConstraints { make in
       make.trailing.equalTo(contentView).inset(16)
-      make.bottom.equalTo(priceChangeRateLabel.snp.top).offset(-4)
+      make.bottom.equalTo(priceChangeRateLabel.snp.top).offset(-8)
     }
     
     priceChangeRateLabel.snp.makeConstraints { make in
@@ -85,7 +85,7 @@ final class PortfolioCollectionViewCell: BaseCollectionViewCell {
   func updateUI(with item: Coin) {
     iconImageView.kf.setImage(with: item.iconURL)
     nameLabel.text = item.name
-    symbolLabel.text = item.symbol
+    symbolLabel.text = item.symbol.uppercased()
     priceLabel.text = item.price.toCurrency
     priceChangeRateLabel.text = item.priceChangeRate.toRoundedRate
     configPriceChangeRateLabel(with: item.priceChangeRate)
