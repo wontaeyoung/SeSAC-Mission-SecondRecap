@@ -86,7 +86,8 @@ final class PortfolioCollectionViewCell: BaseCollectionViewCell {
     iconImageView.kf.setImage(with: item.iconURL)
     nameLabel.text = item.name
     symbolLabel.text = item.symbol
-    priceLabel.text = NumberFormatManager.shared.toCurrency(from: item.price)
+    priceLabel.text = item.price.toCurrency
+    priceChangeRateLabel.text = item.priceChangeRate.toRoundedRate
     configPriceChangeRateLabel(with: item.priceChangeRate)
   }
   
