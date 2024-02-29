@@ -26,10 +26,10 @@ struct CoinDTO: DTO {
   let name: String
   let symbol: String
   let thumb: String
-  let current_price: Int
+  let current_price: Double
   let market_cap_rank: Int
-  let high_24h: Int
-  let low_24h: Int
+  let high_24h: Double
+  let low_24h: Double
   let price_change_percentage_24h: Double
   let ath: Double
   let ath_date: String
@@ -64,10 +64,10 @@ struct CoinDTO: DTO {
     self.id = try container.decodeWithDefaultValue(String.self, forKey: .id)
     self.name = try container.decodeWithDefaultValue(String.self, forKey: .name)
     self.symbol = try container.decodeWithDefaultValue(String.self, forKey: .symbol)
-    self.current_price = try container.decodeWithDefaultValue(Int.self, forKey: .current_price)
+    self.current_price = try container.decodeWithDefaultValue(Double.self, forKey: .current_price)
     self.market_cap_rank = try container.decodeWithDefaultValue(Int.self, forKey: .market_cap_rank)
-    self.high_24h = try container.decodeWithDefaultValue(Int.self, forKey: .high_24h)
-    self.low_24h = try container.decodeWithDefaultValue(Int.self, forKey: .low_24h)
+    self.high_24h = try container.decodeWithDefaultValue(Double.self, forKey: .high_24h)
+    self.low_24h = try container.decodeWithDefaultValue(Double.self, forKey: .low_24h)
     self.price_change_percentage_24h = try container.decodeWithDefaultValue(Double.self, forKey: .price_change_percentage_24h)
     self.ath = try container.decodeWithDefaultValue(Double.self, forKey: .ath)
     self.ath_date = try container.decodeWithDefaultValue(String.self, forKey: .ath_date)
@@ -94,10 +94,10 @@ struct CoinDTO: DTO {
     name: String,
     symbol: String,
     thumb: String,
-    current_price: Int,
+    current_price: Double,
     market_cap_rank: Int,
-    high_24h: Int,
-    low_24h: Int,
+    high_24h: Double,
+    low_24h: Double,
     price_change_percentage_24h: Double,
     ath: Double,
     ath_date: String,
@@ -132,11 +132,11 @@ struct CoinDTO: DTO {
       name: name,
       symbol: symbol,
       icon: thumb,
-      price: current_price,
+      price: Int(current_price),
       priceUSD: priceUSD,
       marketRank: market_cap_rank,
-      dailyHigh: high_24h,
-      dailyLow: low_24h,
+      dailyHigh: Int(high_24h),
+      dailyLow: Int(low_24h),
       priceChangeRate: price_change_percentage_24h,
       highest: Int(ath), 
       hightestAt: DateManager.shared.isoStringtoDate(with: ath_date),
