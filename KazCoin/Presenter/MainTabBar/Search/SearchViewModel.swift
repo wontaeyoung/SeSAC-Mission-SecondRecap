@@ -21,6 +21,7 @@ final class SearchViewModel: ViewModel {
   struct Output {
     var coins: Observable<[Coin]> = .init([])
     var interestCoins: Observable<[String]> = .init([])
+    var interestToast: Observable<String> = .init("")
   }
   
   var input = Input()
@@ -75,11 +76,13 @@ final class SearchViewModel: ViewModel {
         guard let index = output.interestCoins.current.firstIndex(of: selectedCoin.id) else {
           try interestRepository.create(with: selectedCoin)
           output.interestCoins.value.append(selectedCoin.id)
+          output.interestToast.onNext("\(selectedCoin.name)이 추가되었어요.")
           return
         }
         
         try interestRepository.delete(with: selectedCoin)
         output.interestCoins.value.remove(at: index)
+        output.interestToast.onNext("\(selectedCoin.name)이 삭제되었어요.")
         
       } catch {
         LogManager.shared.log(with: error, to: .local)

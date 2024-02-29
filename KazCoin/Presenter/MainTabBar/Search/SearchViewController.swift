@@ -55,7 +55,14 @@ final class SearchViewController: BaseViewController, ViewModelController {
   }
   
   override func setAttribute() {
-    
+    ToastManager.shared.style = ToastStyle().configured {
+      $0.backgroundColor = KazCoinAsset.Color.cardBackground
+      $0.messageColor = KazCoinAsset.Color.primaryText
+      $0.messageFont = .systemFont(ofSize: 15, weight: .semibold)
+      $0.titleColor = KazCoinAsset.Color.brand
+      $0.titleFont = .systemFont(ofSize: 17, weight: .bold)
+      $0.titleAlignment = .center
+    }
   }
   
   override func setConstraint() {
@@ -83,6 +90,12 @@ final class SearchViewController: BaseViewController, ViewModelController {
       guard let self else { return }
       
       tableView.reloadData()
+    }
+    
+    viewModel.output.interestToast.subscribe { [weak self] message in
+      guard let self else { return }
+      
+      view.makeToast(message, duration: 1.0, title: "즐겨찾기 설정")
     }
   }
 }
