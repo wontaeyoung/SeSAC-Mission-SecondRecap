@@ -159,6 +159,6 @@ extension SearchViewController: TableControllable {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    navigationController?.pushViewController(ChartViewController(), animated: true)
+    viewModel.input.didSelectRowEvent.onNext(indexPath)
   }
 }

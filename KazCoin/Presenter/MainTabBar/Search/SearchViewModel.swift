@@ -17,6 +17,7 @@ final class SearchViewModel: ViewModel {
     var viewDidLoadEvent: Observable<Void?> = .init(nil)
     var searchButtonTapEvent: Observable<String?> = .init(nil)
     var interestButtonTapEvent: Observable<IndexPath?> = .init(nil)
+    var didSelectRowEvent: Observable<IndexPath?> = .init(nil)
   }
   
   struct Output {
@@ -94,6 +95,14 @@ final class SearchViewModel: ViewModel {
         LogManager.shared.log(with: error, to: .local)
         coordinator?.showErrorAlert(error: error)
       }
+    }
+    
+    input.didSelectRowEvent.subscribe { [weak self] indexPath in
+      guard let self else { return }
+      guard let indexPath else { return }
+      
+      let selectedCoinID = output.coins.current[indexPath.row].id
+      coordinator?.connectChartFlow(coinID: selectedCoinID)
     }
   }
   
