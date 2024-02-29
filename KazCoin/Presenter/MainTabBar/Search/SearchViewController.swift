@@ -7,7 +7,9 @@
 
 import UIKit
 import KazUtility
+import CoinDesignSystem
 import SnapKit
+import Toast
 
 final class SearchViewController: BaseViewController, ViewModelController {
   
@@ -96,6 +98,17 @@ final class SearchViewController: BaseViewController, ViewModelController {
       guard let self else { return }
       
       view.makeToast(message, duration: 1.0, title: "즐겨찾기 설정")
+    }
+    
+    viewModel.output.loadingIndicatorToggle.subscribe { [weak self] isOn in
+      guard let self else { return }
+      guard let isOn else { return }
+      
+      if isOn {
+        view.makeToastActivity(.center)
+      } else {
+        view.hideToastActivity()
+      }
     }
   }
 }

@@ -22,6 +22,7 @@ final class SearchViewModel: ViewModel {
     var coins: Observable<[Coin]> = .init([])
     var interestCoins: Observable<[String]> = .init([])
     var interestToast: Observable<String> = .init("")
+    var loadingIndicatorToggle: Observable<Bool?> = .init(nil)
   }
   
   var input = Input()
@@ -50,11 +51,15 @@ final class SearchViewModel: ViewModel {
       output.interestCoins.onNext(interestCoins)
     }
     
-    input.searchButtonTapEvent.subscribe { text in
+    input.searchButtonTapEvent.subscribe { [weak self] text in
+      guard let self else { return }
       guard let text else { return }
       
       Task { [weak self] in
         guard let self else { return }
+        
+        output.loadingIndicatorToggle.onNext(true)
+        defer { output.loadingIndicatorToggle.onNext(false) }
         
         do {
           let coins = try await coinRepository.fetch(by: text)
