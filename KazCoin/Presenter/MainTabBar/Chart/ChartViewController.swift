@@ -20,71 +20,71 @@ final class ChartViewController: BaseViewController {
   }
   
   private let nameLabel = UILabel().configured {
-    $0.font = .systemFont(ofSize: 21, weight: .bold)
+    $0.font = .systemFont(ofSize: 29, weight: .heavy)
     $0.textColor = KazCoinAsset.Color.titleName
   }
   
   private let priceLabel = UILabel().configured {
-    $0.font = .systemFont(ofSize: 21, weight: .bold)
+    $0.font = .systemFont(ofSize: 29, weight: .heavy)
     $0.textColor = KazCoinAsset.Color.titleName
   }
   
   private let priceChangeRateLabel = UILabel().configured {
-    $0.font = .systemFont(ofSize: 13)
+    $0.font = .systemFont(ofSize: 15, weight: .semibold)
   }
   
   private let todayLabel = UILabel().configured {
     $0.text = KazCoinAsset.LabelTitle.today
-    $0.font = .systemFont(ofSize: 13)
+    $0.font = .systemFont(ofSize: 15, weight: .semibold)
     $0.textColor = KazCoinAsset.Color.symbolName
   }
   
   private let highTitleLabel = UILabel().configured {
     $0.text = KazCoinAsset.LabelTitle.highPrice
-    $0.font = .systemFont(ofSize: 15, weight: .bold)
+    $0.font = .systemFont(ofSize: 17, weight: .bold)
     $0.textColor = KazCoinAsset.Color.plusLabel
   }
   
   private let highPriceLabel = UILabel().configured {
-    $0.font = .systemFont(ofSize: 15)
+    $0.font = .systemFont(ofSize: 17)
     $0.textColor = KazCoinAsset.Color.primaryText
   }
   
   private let lowTitleLabel = UILabel().configured {
     $0.text = KazCoinAsset.LabelTitle.lowPrice
-    $0.font = .systemFont(ofSize: 15, weight: .bold)
+    $0.font = .systemFont(ofSize: 17, weight: .bold)
     $0.textColor = KazCoinAsset.Color.minusLabel
   }
   
   private let lowPriceLabel = UILabel().configured {
-    $0.font = .systemFont(ofSize: 15)
+    $0.font = .systemFont(ofSize: 17)
     $0.textColor = KazCoinAsset.Color.primaryText
   }
   
   private let highestTitleLabel = UILabel().configured {
     $0.text = KazCoinAsset.LabelTitle.highestPrice
-    $0.font = .systemFont(ofSize: 15, weight: .bold)
+    $0.font = .systemFont(ofSize: 17, weight: .bold)
     $0.textColor = KazCoinAsset.Color.plusLabel
   }
   
   private let highestPriceLabel = UILabel().configured {
-    $0.font = .systemFont(ofSize: 15)
+    $0.font = .systemFont(ofSize: 17)
     $0.textColor = KazCoinAsset.Color.primaryText
   }
   
   private let lowestTitleLabel = UILabel().configured {
     $0.text = KazCoinAsset.LabelTitle.lowestPrice
-    $0.font = .systemFont(ofSize: 15, weight: .bold)
+    $0.font = .systemFont(ofSize: 17, weight: .bold)
     $0.textColor = KazCoinAsset.Color.minusLabel
   }
   
   private let lowestPriceLabel = UILabel().configured {
-    $0.font = .systemFont(ofSize: 15)
+    $0.font = .systemFont(ofSize: 17)
     $0.textColor = KazCoinAsset.Color.primaryText
   }
   
   private let updateAtLabel = UILabel().configured {
-    $0.font = .systemFont(ofSize: 11)
+    $0.font = .systemFont(ofSize: 15, weight: .bold)
     $0.textColor = KazCoinAsset.Color.symbolName
     $0.textAlignment = .right
   }
@@ -116,51 +116,55 @@ final class ChartViewController: BaseViewController {
   }
   
   override func setAttribute() {
-    
+    navigationItem.rightBarButtonItem = UIBarButtonItem(
+      image: nil, style: .done, target: self,
+      action: #selector(interestBarButtonTapped)
+    )
   }
   
   override func setConstraint() {
     iconImageView.snp.makeConstraints { make in
-      make.top.leading.equalTo(view.safeAreaLayoutGuide).inset(8)
+      make.top.leading.equalTo(view.safeAreaLayoutGuide).inset(16)
       make.size.equalTo(44)
     }
     
     nameLabel.snp.makeConstraints { make in
-      make.top.trailing.equalTo(view.safeAreaLayoutGuide).inset(8)
+      make.centerY.equalTo(iconImageView)
       make.leading.equalTo(iconImageView.snp.trailing).offset(8)
+      make.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
     }
     
     priceLabel.snp.makeConstraints { make in
-      make.top.equalTo(nameLabel.snp.bottom).offset(8)
-      make.horizontalEdges.equalTo(view).inset(8)
+      make.top.equalTo(iconImageView.snp.bottom).offset(16)
+      make.horizontalEdges.equalTo(view).inset(16)
     }
     
     priceChangeRateLabel.snp.makeConstraints { make in
-      make.top.equalTo(priceLabel.snp.bottom).offset(4)
-      make.leading.equalTo(view).inset(8)
+      make.top.equalTo(priceLabel.snp.bottom).offset(8)
+      make.leading.equalTo(view).inset(16)
     }
     
     todayLabel.snp.makeConstraints { make in
-      make.top.equalTo(priceLabel.snp.bottom).offset(4)
-      make.leading.equalTo(priceChangeRateLabel.snp.trailing).offset(4)
-      make.trailing.equalTo(view).inset(8)
+      make.top.equalTo(priceLabel.snp.bottom).offset(8)
+      make.leading.equalTo(priceChangeRateLabel.snp.trailing).offset(8)
+      make.trailing.equalTo(view).inset(16)
     }
     
     highTitleLabel.snp.makeConstraints { make in
       make.top.equalTo(priceChangeRateLabel.snp.bottom).offset(16)
-      make.leading.equalTo(view).inset(8)
-      make.width.equalTo(UIScreen.main.bounds.width / 2 - 24)
+      make.leading.equalTo(view).inset(16)
+      make.width.equalTo(UIScreen.main.bounds.width / 2 - 48)
     }
     
     highPriceLabel.snp.makeConstraints { make in
-      make.top.equalTo(highTitleLabel.snp.bottom).offset(4)
+      make.top.equalTo(highTitleLabel.snp.bottom).offset(8)
       make.horizontalEdges.equalTo(highestTitleLabel)
     }
     
     lowTitleLabel.snp.makeConstraints { make in
       make.top.equalTo(highTitleLabel)
-      make.leading.equalTo(highestTitleLabel.snp.trailing).offset(8)
-      make.trailing.equalTo(view).inset(8)
+      make.leading.equalTo(highestTitleLabel.snp.trailing).offset(16)
+      make.trailing.equalTo(view).inset(16)
     }
     
     lowPriceLabel.snp.makeConstraints { make in
@@ -169,12 +173,12 @@ final class ChartViewController: BaseViewController {
     }
     
     highestTitleLabel.snp.makeConstraints { make in
-      make.top.equalTo(highPriceLabel.snp.bottom).offset(8)
+      make.top.equalTo(highPriceLabel.snp.bottom).offset(16)
       make.horizontalEdges.equalTo(highTitleLabel)
     }
     
     highestPriceLabel.snp.makeConstraints { make in
-      make.top.equalTo(highestTitleLabel.snp.bottom).offset(4)
+      make.top.equalTo(highestTitleLabel.snp.bottom).offset(8)
       make.horizontalEdges.equalTo(highTitleLabel)
     }
     
@@ -189,7 +193,7 @@ final class ChartViewController: BaseViewController {
     }
     
     updateAtLabel.snp.makeConstraints { make in
-      make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(8)
+      make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
     }
   }
   
@@ -199,6 +203,10 @@ final class ChartViewController: BaseViewController {
   }
   
   // MARK: - Method
+  private func updateInterestButton(_ interest: Bool) {
+    navigationItem.rightBarButtonItem?.image = interest ? .btnStarFill : .btnStar
+  }
+  
   private func updateUI(with coin: Coin) {
     iconImageView.kf.setImage(with: coin.iconURL)
     nameLabel.text = coin.name
@@ -209,6 +217,7 @@ final class ChartViewController: BaseViewController {
     lowPriceLabel.text = coin.dailyLow.toCurrency
     highestPriceLabel.text = coin.highest.toCurrency
     lowestPriceLabel.text = coin.lowest.toCurrency
+    updateAtLabel.text = DateManager.shared.toString(with: coin.updateAt, formatString: "MM/dd HH:mm:dd 업데이트")
   }
   
   private func configPriceChangeRateLabel(with rate: Double) {
@@ -218,4 +227,7 @@ final class ChartViewController: BaseViewController {
   }
   
   // MARK: - Selector
+  @objc private func interestBarButtonTapped() {
+    
+  }
 }
