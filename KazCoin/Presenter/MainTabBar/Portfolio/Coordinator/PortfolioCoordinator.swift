@@ -7,6 +7,7 @@
 
 import UIKit
 import KazUtility
+import KazRealm
 
 final class PortfolioCoordinator: Coordinator {
   
@@ -23,7 +24,20 @@ final class PortfolioCoordinator: Coordinator {
   
   // MARK: - Method
   func start() {
+    showPortfolioView()
+  }
+  
+  func showPortfolioView() {
+    let service = LiveRealmService()
+    let interestRepository = LiveInterestRepository(service: service)
+    let coinRepository = LiveCoinRepository()
+    let viewModel = PortfolioViewModel(coinRepository: coinRepository, interestRepository: interestRepository)
+    let viewController = PortfolioViewController(viewModel: viewModel)
+      .navigationTitle(with: "Favorite Coin", displayMode: .always)
+      .hideBackTitle()
     
+    viewModel.coordinator = self
+    self.push(viewController)
   }
 }
 
