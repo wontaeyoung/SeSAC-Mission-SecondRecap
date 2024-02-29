@@ -15,7 +15,8 @@ final class SearchViewController: BaseViewController, ViewModelController {
   
   // MARK: - UI
   private lazy var searchBar = UISearchBar().configured {
-    $0.placeholder = "Coin Name"
+    $0.placeholder = KazCoinAsset.LabelTitle.searchCoinPlaceholder
+    $0.tintColor = KazCoinAsset.Color.brand
     $0.autocapitalizationType = .none
     $0.autocorrectionType = .no
     $0.spellCheckingType = .no
@@ -25,12 +26,14 @@ final class SearchViewController: BaseViewController, ViewModelController {
   }
   
   private lazy var searchController = UISearchController(searchResultsController: nil).configured {
-    $0.searchBar.placeholder = "Coin Name"
+    $0.searchBar.placeholder = KazCoinAsset.LabelTitle.searchCoinPlaceholder
+    $0.searchBar.tintColor = KazCoinAsset.Color.brand
     $0.searchBar.autocapitalizationType = .none
     $0.searchBar.autocorrectionType = .no
     $0.searchBar.spellCheckingType = .no
     $0.searchBar.becomeFirstResponder()
     $0.searchBar.delegate = self
+    $0.searchBar.backgroundImage = .init()
   }
   
   private lazy var tableView = UITableView().configured {
@@ -64,6 +67,8 @@ final class SearchViewController: BaseViewController, ViewModelController {
       $0.titleColor = KazCoinAsset.Color.brand
       $0.titleFont = .systemFont(ofSize: 17, weight: .bold)
       $0.titleAlignment = .center
+      $0.activityBackgroundColor = .clear
+      $0.activityIndicatorColor = KazCoinAsset.Color.primaryText
     }
   }
   
@@ -97,7 +102,12 @@ final class SearchViewController: BaseViewController, ViewModelController {
     viewModel.output.interestToast.subscribe { [weak self] message in
       guard let self else { return }
       
-      view.makeToast(message, duration: 1.0, position: .center, title: "즐겨찾기 설정")
+      view.makeToast(
+        message,
+        duration: 1.0,
+        position: .center,
+        title: KazCoinAsset.LabelTitle.interestConfiguration
+      )
     }
     
     viewModel.output.loadingIndicatorToggle.subscribe { [weak self] isOn in
@@ -134,7 +144,11 @@ extension SearchViewController: TableControllable {
     let item: Coin = viewModel.itemAt(indexPath)
     let interested: Bool = viewModel.interestedAt(indexPath)
     
-    cell.updateUI(with: item, interested: interested, searchText: viewModel.currentSearchText)
+    cell.updateUI(
+      with: item,
+      interested: interested,
+      searchText: viewModel.currentSearchText
+    )
     cell.updateTapEvent { [weak self] in
       guard let self else { return }
       
@@ -142,5 +156,9 @@ extension SearchViewController: TableControllable {
     }
     
     return cell
+  }
+  
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    navigationController?.pushViewController(ChartViewController(), animated: true)
   }
 }

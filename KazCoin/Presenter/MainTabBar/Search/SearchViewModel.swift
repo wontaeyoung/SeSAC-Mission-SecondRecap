@@ -7,6 +7,7 @@
 
 import Foundation
 import KazUtility
+import CoinDesignSystem
 import KazRealm
 
 final class SearchViewModel: ViewModel {
@@ -81,13 +82,13 @@ final class SearchViewModel: ViewModel {
         guard let index = output.interestCoins.current.firstIndex(of: selectedCoin.id) else {
           try interestRepository.create(with: selectedCoin)
           output.interestCoins.value.append(selectedCoin.id)
-          output.interestToast.onNext("\(selectedCoin.name)이 추가되었어요.")
+          output.interestToast.onNext(KazCoinAsset.LabelTitle.interestToggleMessage(selectedCoin.name, isOn: true))
           return
         }
         
         try interestRepository.delete(with: selectedCoin)
         output.interestCoins.value.remove(at: index)
-        output.interestToast.onNext("\(selectedCoin.name)이 삭제되었어요.")
+        output.interestToast.onNext(KazCoinAsset.LabelTitle.interestToggleMessage(selectedCoin.name, isOn: false))
         
       } catch {
         LogManager.shared.log(with: error, to: .local)
