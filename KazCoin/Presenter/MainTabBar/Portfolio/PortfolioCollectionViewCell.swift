@@ -86,16 +86,19 @@ final class PortfolioCollectionViewCell: BaseCollectionViewCell {
     iconImageView.kf.setImage(with: item.iconURL)
     nameLabel.text = item.name
     symbolLabel.text = item.symbol
-    priceLabel.text = "₩ \(NumberFormatManager.shared.toCurrency(from: item.price))"
+    priceLabel.text = NumberFormatManager.shared.toCurrency(from: item.price)
     configPriceChangeRateLabel(with: item.priceChangeRate)
   }
   
   private func configPriceChangeRateLabel(with rate: Double) {
-    let isMinus: Bool = rate.isLess(than: .zero)
-    let preOperator: String = isMinus ? "" : "+"
-    
-    priceChangeRateLabel.text = preOperator + NumberFormatManager.shared.toRounded(from: rate) + "%"
-    priceChangeRateLabel.textColor = isMinus ? KazCoinAsset.Color.minusLabel : KazCoinAsset.Color.plusLabel
-    priceChangeRateLabel.backgroundColor = isMinus ? KazCoinAsset.Color.minusBackground : KazCoinAsset.Color.plusBackground
+    priceChangeRateLabel.configure {
+      $0.textColor = rate.isLess(than: .zero)
+      ? KazCoinAsset.Color.minusLabel
+      : KazCoinAsset.Color.plusLabel
+      
+      $0.backgroundColor = rate.isLess(than: .zero)
+      ? KazCoinAsset.Color.minusBackground
+      : KazCoinAsset.Color.plusBackground
+    }
   }
 }
