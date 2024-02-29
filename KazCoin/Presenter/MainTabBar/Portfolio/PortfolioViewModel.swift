@@ -19,6 +19,7 @@ final class PortfolioViewModel: ViewModel {
   
   struct Output {
     var coins: Observable<[Coin]> = .init([])
+    var loadingIndicatorToggle: Observable<Bool?> = .init(nil)
   }
   
   var input = Input()
@@ -47,6 +48,9 @@ final class PortfolioViewModel: ViewModel {
       Task { [weak self] in
         guard let self else { return }
         
+        output.loadingIndicatorToggle.onNext(true)
+        defer { output.loadingIndicatorToggle.onNext(false) }
+        
         do {
           let coins = try await coinRepository.fetch(from: currentInterestCoins)
           
@@ -67,10 +71,12 @@ final class PortfolioViewModel: ViewModel {
       Task { [weak self] in
         guard let self else { return }
         
+        output.loadingIndicatorToggle.onNext(true)
+        defer { output.loadingIndicatorToggle.onNext(false) }
+        
         do {
           let coins = try await coinRepository.fetch(from: newInterestCoins)
           currentInterestCoins = newInterestCoins
-          
           output.coins.onNext(coins)
         } catch {
           LogManager.shared.log(with: error, to: .network)

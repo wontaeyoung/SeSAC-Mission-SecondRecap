@@ -8,6 +8,7 @@
 import UIKit
 import KazUtility
 import SnapKit
+import Toast
 
 final class PortfolioViewController: BaseViewController, ViewModelController {
   
@@ -55,6 +56,17 @@ final class PortfolioViewController: BaseViewController, ViewModelController {
     viewModel.output.coins.subscribe { [weak self] _ in
       guard let self else { return }
       collectionView.reloadData()
+    }
+    
+    viewModel.output.loadingIndicatorToggle.subscribe { [weak self] isOn in
+      guard let self else { return }
+      guard let isOn else { return }
+      
+      if isOn {
+        view.makeToastActivity(.center)
+      } else {
+        view.hideToastActivity()
+      }
     }
   }
 }
