@@ -60,7 +60,7 @@ enum CoinRouter: AFRouter {
         return [
           ParameterKey.vs_currency.key: "krw",
           ParameterKey.ids.key: idList.joined(separator: ","),
-          ParameterKey.sparkline.key: true
+          ParameterKey.sparkline.key: "true"
         ]
     }
   }
