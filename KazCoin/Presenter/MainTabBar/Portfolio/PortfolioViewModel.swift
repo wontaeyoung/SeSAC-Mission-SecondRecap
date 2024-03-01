@@ -7,7 +7,6 @@
 
 import Foundation
 import KazUtility
-import KazRealm
 
 final class PortfolioViewModel: ViewModel {
   
@@ -42,6 +41,7 @@ final class PortfolioViewModel: ViewModel {
   
   // MARK: - Method
   func transform() {
+    
     input.viewDidLoadEvent.subscribe { [weak self] _ in
       guard let self else { return }
       currentInterestCoins = interestRepository.fetch()

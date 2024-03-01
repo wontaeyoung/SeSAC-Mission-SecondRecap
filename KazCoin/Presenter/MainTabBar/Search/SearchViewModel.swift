@@ -8,7 +8,6 @@
 import Foundation
 import KazUtility
 import CoinDesignSystem
-import KazRealm
 
 final class SearchViewModel: ViewModel {
   
@@ -46,6 +45,7 @@ final class SearchViewModel: ViewModel {
   
   // MARK: - Method
   func transform() {
+    
     input.viewDidLoadEvent.subscribe { [weak self] _ in
       guard let self else { return }
       
@@ -68,6 +68,7 @@ final class SearchViewModel: ViewModel {
           output.coins.onNext(coins)
           currentSearchText = text
         } catch {
+          LogManager.shared.log(with: error.localizedDescription, to: .network, level: .debug)
           LogManager.shared.log(with: error, to: .network)
           coordinator?.showErrorAlert(error: error)
         }

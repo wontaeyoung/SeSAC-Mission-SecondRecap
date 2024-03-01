@@ -7,7 +7,6 @@
 
 import Foundation
 import KazUtility
-import KazRealm
 
 final class ChartViewModel: ViewModel {
   
@@ -44,6 +43,7 @@ final class ChartViewModel: ViewModel {
   
   // MARK: - Method
   func transform() {
+    
     input.viewDidLoadEvent.subscribe { [weak self] _ in
       guard let self else { return }
       let interest: Bool = interestRepository.fetch().contains(coinID)
@@ -63,6 +63,7 @@ final class ChartViewModel: ViewModel {
           output.interestToggle.onNext(interest)
           output.coin.onNext(coin)
         } catch {
+          LogManager.shared.log(with: error.localizedDescription, to: .network, level: .debug)
           LogManager.shared.log(with: error, to: .network)
           coordinator?.showErrorAlert(error: error)
         }
