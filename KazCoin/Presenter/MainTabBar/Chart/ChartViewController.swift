@@ -96,6 +96,10 @@ final class ChartViewController: BaseViewController, ViewModelController {
     super.init()
   }
   
+  deinit {
+    viewModel.input.viewDeinitEvent.onNext(())
+  }
+  
   // MARK: - Life Cycle
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)

@@ -33,7 +33,7 @@ final class ChartViewModel: ViewModel {
   weak var coordinator: ChartCoordinator?
   private let coinRepository: any CoinRepository
   private let interestRepository: any InterestRepository
-  let coinID: String
+  private let coinID: String
   
   // MARK: - Initializer
   init(coinRepository: any CoinRepository, interestRepository: any InterestRepository, coinID: String) {
@@ -100,6 +100,10 @@ final class ChartViewModel: ViewModel {
       guard let self else { return }
       let newInterestCoins = interestRepository.fetch()
       output.interestToggle.onNext(newInterestCoins.contains(coinID))
+    }
+    
+    input.viewDeinitEvent.subscribe { _ in
+      self.coordinator?.end()
     }
   }
   
