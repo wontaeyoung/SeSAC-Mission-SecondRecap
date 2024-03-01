@@ -83,6 +83,8 @@ final class ChartViewController: BaseViewController, ViewModelController {
     $0.textColor = KazCoinAsset.Color.primaryText
   }
   
+  private let chartView = ChartView()
+  
   private let updateAtLabel = UILabel().configured {
     $0.font = .systemFont(ofSize: 15, weight: .bold)
     $0.textColor = KazCoinAsset.Color.symbolName
@@ -115,6 +117,7 @@ final class ChartViewController: BaseViewController, ViewModelController {
       highestPriceLabel,
       lowestTitleLabel,
       lowestPriceLabel,
+      chartView,
       updateAtLabel
     )
   }
@@ -196,6 +199,12 @@ final class ChartViewController: BaseViewController, ViewModelController {
       make.horizontalEdges.equalTo(lowTitleLabel)
     }
     
+    chartView.snp.makeConstraints { make in
+      make.top.equalTo(lowPriceLabel.snp.bottom).offset(16)
+      make.horizontalEdges.equalTo(view)
+      make.bottom.equalTo(updateAtLabel.snp.top)
+    }
+    
     updateAtLabel.snp.makeConstraints { make in
       make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
     }
@@ -240,12 +249,14 @@ final class ChartViewController: BaseViewController, ViewModelController {
     nameLabel.text = coin.name
     priceLabel.text = coin.price.toCurrency
     priceChangeRateLabel.text = coin.priceChangeRate.toRoundedRate
-    configPriceChangeRateLabel(with: coin.priceChangeRate)
     highPriceLabel.text = coin.dailyHigh.toCurrency
     lowPriceLabel.text = coin.dailyLow.toCurrency
     highestPriceLabel.text = coin.highest.toCurrency
     lowestPriceLabel.text = coin.lowest.toCurrency
     updateAtLabel.text = DateManager.shared.toString(with: coin.updateAt, formatString: "MM/dd HH:mm:dd 업데이트")
+    
+    chartView.updateUI(from: coin.sparklines)
+    configPriceChangeRateLabel(with: coin.priceChangeRate)
   }
   
   private func configPriceChangeRateLabel(with rate: Double) {
