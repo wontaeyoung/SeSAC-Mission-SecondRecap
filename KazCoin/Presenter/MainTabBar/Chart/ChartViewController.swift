@@ -34,13 +34,11 @@ final class ChartViewController: BaseViewController, ViewModelController {
   }
   
   private let todayLabel = UILabel().configured {
-    $0.text = KazCoinAsset.LabelTitle.today
     $0.font = .systemFont(ofSize: 15, weight: .semibold)
     $0.textColor = KazCoinAsset.Color.symbolName
   }
   
   private let highTitleLabel = UILabel().configured {
-    $0.text = KazCoinAsset.LabelTitle.highPrice
     $0.font = .systemFont(ofSize: 17, weight: .bold)
     $0.textColor = KazCoinAsset.Color.plusLabel
   }
@@ -51,7 +49,6 @@ final class ChartViewController: BaseViewController, ViewModelController {
   }
   
   private let lowTitleLabel = UILabel().configured {
-    $0.text = KazCoinAsset.LabelTitle.lowPrice
     $0.font = .systemFont(ofSize: 17, weight: .bold)
     $0.textColor = KazCoinAsset.Color.minusLabel
   }
@@ -62,7 +59,6 @@ final class ChartViewController: BaseViewController, ViewModelController {
   }
   
   private let highestTitleLabel = UILabel().configured {
-    $0.text = KazCoinAsset.LabelTitle.highestPrice
     $0.font = .systemFont(ofSize: 17, weight: .bold)
     $0.textColor = KazCoinAsset.Color.plusLabel
   }
@@ -73,7 +69,6 @@ final class ChartViewController: BaseViewController, ViewModelController {
   }
   
   private let lowestTitleLabel = UILabel().configured {
-    $0.text = KazCoinAsset.LabelTitle.lowestPrice
     $0.font = .systemFont(ofSize: 17, weight: .bold)
     $0.textColor = KazCoinAsset.Color.minusLabel
   }
@@ -200,7 +195,7 @@ final class ChartViewController: BaseViewController, ViewModelController {
     }
     
     chartView.snp.makeConstraints { make in
-      make.top.equalTo(lowPriceLabel.snp.bottom).offset(16)
+      make.top.equalTo(lowestPriceLabel.snp.bottom).offset(16)
       make.horizontalEdges.equalTo(view)
       make.bottom.equalTo(updateAtLabel.snp.top)
     }
@@ -245,6 +240,12 @@ final class ChartViewController: BaseViewController, ViewModelController {
   }
   
   private func updateUI(with coin: Coin) {
+    todayLabel.text = KazCoinAsset.LabelTitle.today
+    highTitleLabel.text = KazCoinAsset.LabelTitle.highPrice
+    lowTitleLabel.text = KazCoinAsset.LabelTitle.lowPrice
+    highestTitleLabel.text = KazCoinAsset.LabelTitle.highestPrice
+    lowestTitleLabel.text = KazCoinAsset.LabelTitle.lowestPrice
+    
     iconImageView.kf.setImage(with: coin.iconURL)
     nameLabel.text = coin.name
     priceLabel.text = coin.price.toCurrency
