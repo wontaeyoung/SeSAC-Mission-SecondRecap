@@ -11,6 +11,7 @@ enum CoinError: AppError {
   
   case cannotOverMaximumInterest(max: Int)
   case noResultWithID(id: String)
+  case tooManyRequest
   
   var logDescription: String {
     switch self {
@@ -19,6 +20,9 @@ enum CoinError: AppError {
         
       case .noResultWithID(let id):
         return "\(id) 코인 마켓 조회 결과 없음"
+        
+      case .tooManyRequest:
+        return "API 요청 횟수 초과"
     }
   }
   
@@ -29,6 +33,9 @@ enum CoinError: AppError {
         
       case .noResultWithID:
         return "코인 정보를 찾을 수 없어요. 확인을 누르면 이전 화면으로 돌아가요."
+        
+      case .tooManyRequest:
+        return "요청 횟수가 초과되었어요. 잠시 후에 다시 시도해주세요!"
     }
   }
 }
