@@ -236,5 +236,4 @@ final class ChartView: BaseView {
 @available(iOS 17, *)
 #Preview {
  ChartView()
-
 }

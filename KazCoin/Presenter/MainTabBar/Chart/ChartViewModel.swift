@@ -7,12 +7,14 @@
 
 import Foundation
 import KazUtility
+import CoinDesignSystem
 
 final class ChartViewModel: ViewModel {
   
   // MARK: - I/O
   struct Input {
     var viewDidLoadEvent: Observable<Void?> = .init(nil)
+    var interestButtonTapEvent: Observable<Void?> = .init(nil)
     var viewWillAppearEvent: Observable<Void?> = .init(nil)
     var viewDeinitEvent: Observable<Void?> = .init(nil)
   }
@@ -20,6 +22,7 @@ final class ChartViewModel: ViewModel {
   struct Output {
     var coin: Observable<Coin?> = .init(nil)
     var interestToggle: Observable<Bool?> = .init(nil)
+    var interestToast: Observable<String?> = .init(nil)
     var loadingIndicatorToggle: Observable<Bool?> = .init(nil)
   }
   
@@ -67,6 +70,29 @@ final class ChartViewModel: ViewModel {
           LogManager.shared.log(with: error, to: .network)
           coordinator?.showErrorAlert(error: error)
         }
+      }
+    }
+    
+    input.interestButtonTapEvent.subscribe { [weak self] _ in
+      guard let self else { return }
+      guard let coin = output.coin.current else { return }
+      
+      let interest: Bool = interestRepository.fetch().contains(coinID)
+      let toastMessage: String = KazCoinAsset.LabelTitle.interestToggleMessage(coin.name, isOn: !interest)
+      
+      do {
+        if interest {
+          try interestRepository.delete(with: coin)
+          output.interestToggle.onNext(false)
+          output.interestToast.onNext(toastMessage)
+        } else {
+          try interestRepository.create(with: coin)
+          output.interestToggle.onNext(true)
+          output.interestToast.onNext(toastMessage)
+        }
+      } catch {
+        LogManager.shared.log(with: error, to: .local)
+        coordinator?.showErrorAlert(error: error)
       }
     }
   }

@@ -220,6 +220,18 @@ final class ChartViewController: BaseViewController, ViewModelController {
       updateInterestButton(interest)
     }
     
+    viewModel.output.interestToast.subscribe { [weak self] message in
+      guard let self else { return }
+      guard let message else { return }
+      
+      view.makeToast(
+        message,
+        duration: 1,
+        position: .center,
+        title: KazCoinAsset.LabelTitle.interestConfiguration
+      )
+    }
+    
     viewModel.output.loadingIndicatorToggle.subscribe { [weak self] isOn in
       guard let self else { return }
       guard let isOn else { return }
@@ -268,6 +280,6 @@ final class ChartViewController: BaseViewController, ViewModelController {
   
   // MARK: - Selector
   @objc private func interestBarButtonTapped() {
-    
+    viewModel.input.interestButtonTapEvent.onNext(())
   }
 }
