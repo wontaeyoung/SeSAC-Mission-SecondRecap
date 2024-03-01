@@ -13,8 +13,8 @@ final class LiveCoinRepository: CoinRepository {
   func fetch(by searchText: String) async throws -> [Coin] {
     return try await AFManager.shared
       .callRequest(responseType: CoinResponseDTO.self, router: CoinRouter.coin(query: searchText))
+      .toEntity()
       .coins
-      .map { $0.toEntity() }
   }
   
   func fetch(from idList: [String]) async throws -> [Coin] {
