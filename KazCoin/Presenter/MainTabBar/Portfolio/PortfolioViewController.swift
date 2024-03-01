@@ -97,4 +97,8 @@ extension PortfolioViewController: CollectionControllable {
     
     return cell
   }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    viewModel.input.didSelectItemEvent.onNext(indexPath)
+  }
 }

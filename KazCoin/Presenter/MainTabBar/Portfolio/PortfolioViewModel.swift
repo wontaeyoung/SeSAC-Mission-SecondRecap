@@ -15,6 +15,7 @@ final class PortfolioViewModel: ViewModel {
   struct Input {
     var viewDidLoadEvent: Observable<Void?> = .init(nil)
     var viewWillAppearEvent: Observable<Void?> = .init(nil)
+    var didSelectItemEvent: Observable<IndexPath?> = .init(nil)
   }
   
   struct Output {
@@ -56,6 +57,7 @@ final class PortfolioViewModel: ViewModel {
           
           output.coins.onNext(coins)
         } catch {
+          LogManager.shared.log(with: error.localizedDescription, to: .network, level: .debug)
           LogManager.shared.log(with: error, to: .network)
           coordinator?.showErrorAlert(error: error)
         }
@@ -83,6 +85,14 @@ final class PortfolioViewModel: ViewModel {
           coordinator?.showErrorAlert(error: error)
         }
       }
+    }
+    
+    input.didSelectItemEvent.subscribe { [weak self] indexPath in
+      guard let self else { return }
+      guard let indexPath else { return }
+      
+      let selectedCoinID = output.coins.current[indexPath.row].id
+      coordinator?.connectChartFlow(coinID: selectedCoinID)
     }
   }
   
