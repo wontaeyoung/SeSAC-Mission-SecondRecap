@@ -59,7 +59,8 @@ enum CoinRouter: AFRouter {
       case .market(let idList):
         return [
           ParameterKey.vs_currency.key: "krw",
-          ParameterKey.ids.key: idList.joined(separator: ",")
+          ParameterKey.ids.key: idList.joined(separator: ","),
+          ParameterKey.sparkline.key: true
         ]
     }
   }
@@ -68,6 +69,7 @@ enum CoinRouter: AFRouter {
     case query
     case vs_currency
     case ids
+    case sparkline
     
     var key: String {
       return self.rawValue
