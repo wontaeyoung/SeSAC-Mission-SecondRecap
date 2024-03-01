@@ -14,6 +14,7 @@ final class SearchViewModel: ViewModel {
   // MARK: - I/O
   struct Input {
     var viewDidLoadEvent: Observable<Void?> = .init(nil)
+    var viewWillAppearEvent: Observable<Void?> = .init(nil)
     var searchButtonTapEvent: Observable<String?> = .init(nil)
     var interestButtonTapEvent: Observable<IndexPath?> = .init(nil)
     var didSelectRowEvent: Observable<IndexPath?> = .init(nil)
@@ -51,6 +52,11 @@ final class SearchViewModel: ViewModel {
       
       let interestCoins = interestRepository.fetch()
       output.interestCoins.onNext(interestCoins)
+    }
+    
+    input.viewWillAppearEvent.subscribe { [weak self] _ in
+      guard let self else { return }
+      output.interestCoins.onNext(interestRepository.fetch())
     }
     
     input.searchButtonTapEvent.subscribe { [weak self] text in
