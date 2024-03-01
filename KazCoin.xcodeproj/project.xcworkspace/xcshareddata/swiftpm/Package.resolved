@@ -10,12 +10,21 @@
       }
     },
     {
+      "identity" : "charts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielgindi/Charts",
+      "state" : {
+        "revision" : "dd9c72e3d7e751e769971092a6bd72d39198ae63",
+        "version" : "5.1.0"
+      }
+    },
+    {
       "identity" : "kazalamofire",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/wontaeyoung/KazAlamofire",
       "state" : {
-        "revision" : "1405b14dc366bc0ed0d28d206a7451dda224d51c",
-        "version" : "1.0.0"
+        "revision" : "9ce61c172050980002210d59e463848e93d65853",
+        "version" : "1.1.0"
       }
     },
     {
@@ -32,8 +41,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/wontaeyoung/KazUtility",
       "state" : {
-        "revision" : "7cb0da233a5a095444f90b6182ea525b5b6a43ba",
-        "version" : "1.8.0"
+        "revision" : "9404dbd223d4267826d20ced402d2fabbb87ba72",
+        "version" : "1.9.0"
       }
     },
     {
