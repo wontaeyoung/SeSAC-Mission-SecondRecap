@@ -19,7 +19,11 @@ final class LiveCoinRepository: CoinRepository {
   
   func fetch(from idList: [String]) async throws -> [Coin] {
     return try await AFManager.shared
-      .callRequest(responseType: [CoinDTO].self, router: CoinRouter.market(idList: idList))
+      .callRequest(
+        responseType: [CoinDTO].self,
+        router: CoinRouter.market(idList: idList),
+        additionalError: [429: CoinError.tooManyRequest]
+      )
       .map { $0.toEntity() }
   }
 }
