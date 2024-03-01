@@ -95,6 +95,12 @@ final class ChartViewModel: ViewModel {
         coordinator?.showErrorAlert(error: error)
       }
     }
+    
+    input.viewWillAppearEvent.subscribe { [weak self] _ in
+      guard let self else { return }
+      let newInterestCoins = interestRepository.fetch()
+      output.interestToggle.onNext(newInterestCoins.contains(coinID))
+    }
   }
   
   private func showNoResultAlert() {

@@ -97,6 +97,12 @@ final class ChartViewController: BaseViewController, ViewModelController {
   }
   
   // MARK: - Life Cycle
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    viewModel.input.viewWillAppearEvent.onNext(())
+  }
+  
   override func setHierarchy() {
     view.addSubviews(
       iconImageView,
