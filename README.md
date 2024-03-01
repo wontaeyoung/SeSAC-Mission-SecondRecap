@@ -18,3 +18,23 @@ AppError 프로토콜로 에러를 관리하면서 일관적인 형태로 에러
 
 Int는 문자열이나 정수형이나 URL 상에서 동일하게 표현되지만, API에서 요구하는 쿼리 파라미터가 true와 같은 Bool 타입이라면 반드시 "true"로 작성해야한다.
 
+
+# deinit과 약한 참조로 인한 메모리 시점 문제
+
+`ChartCoordinator`는 차트 화면을 표시하기 때문에 모든 탭바 Coordinator에서 하위 Coordinator로 연결될 수 있다.
+
+`push`된 차트 화면은 뒤로가기 버튼으로 `pop`될 때 `ChartCoordinator`가 자동으로 해제되지 않기 때문에 상위 Coordinator에 end 이벤트를 전달해서 childCoordinator 리스트에서 해제되도록 해야한다.
+
+그래서 `ChartViewController`의 deinit 스코프에서 ViewModel에 `viewDeinitEvent`를 전달하도록 했다.
+
+ViewModel은 viewDeinitEvent를 구독하고, Coordinator의 end 메서드를 호출한다.
+
+처음에 이 로직이 정상적으로 수행되지 않았는데, `viewDeinitEvent`의 `subscribe` 로직에서 ViewModel을 캡처리스트에서 `weak self`로 캡처했기 때문이었다.
+
+ViewController가 메모리에서 해제되면서 ViewModel의 RC가 0으로 내려가게 되었기 때문이었다.
+
+그래서 `viewDeinitEvent`의 `subscribe` 로직이 수행될 때는 이미 ViewModel이 메모리에서 내려가서 로직이 수행되지 않았던 것이다.
+
+`subscribe` 스코프에서 ViewModel을 강한 참조로 변경해서 문제가 해결되었다.
+
+Ps. 다 작성하고나니 생각난건데 그냥 ViewModel의 deinit에서 coordinator를 해제했으면 더 쉽게 해결될 수 있었다.
