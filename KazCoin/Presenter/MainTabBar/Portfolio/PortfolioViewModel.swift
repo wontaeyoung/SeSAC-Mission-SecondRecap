@@ -45,6 +45,7 @@ final class PortfolioViewModel: ViewModel {
     input.viewDidLoadEvent.subscribe { [weak self] _ in
       guard let self else { return }
       currentInterestCoins = interestRepository.fetch()
+      guard !currentInterestCoins.isEmpty else { return }
       
       Task { [weak self] in
         guard let self else { return }
@@ -70,6 +71,12 @@ final class PortfolioViewModel: ViewModel {
       let newInterestCoins = interestRepository.fetch()
       guard isInterestChanged(current: currentInterestCoins, new: newInterestCoins) else { return }
       
+      guard !newInterestCoins.isEmpty else {
+        output.coins.onNext([])
+        currentInterestCoins = []
+        return
+      }
+      
       Task { [weak self] in
         guard let self else { return }
         
@@ -81,6 +88,7 @@ final class PortfolioViewModel: ViewModel {
           currentInterestCoins = newInterestCoins
           output.coins.onNext(coins)
         } catch {
+          LogManager.shared.log(with: error.localizedDescription, to: .network, level: .debug)
           LogManager.shared.log(with: error, to: .network)
           coordinator?.showErrorAlert(error: error)
         }

@@ -19,6 +19,13 @@ final class PortfolioViewController: BaseViewController, ViewModelController {
     $0.dataSource = self
   }
   
+  private let emptyInterestLabel = UILabel().configured {
+    $0.text = "즐겨찾기한 코인이 없어요!"
+    $0.textColor = .gray
+    $0.font = .systemFont(ofSize: 17, weight: .bold)
+    $0.textAlignment = .center
+  }
+  
   // MARK: - Property
   let viewModel: PortfolioViewModel
   
@@ -37,7 +44,7 @@ final class PortfolioViewController: BaseViewController, ViewModelController {
   }
   
   override func setHierarchy() {
-    view.addSubviews(collectionView)
+    view.addSubviews(collectionView, emptyInterestLabel)
   }
   
   override func setAttribute() {
@@ -48,14 +55,19 @@ final class PortfolioViewController: BaseViewController, ViewModelController {
     collectionView.snp.makeConstraints { make in
       make.edges.equalTo(view.safeAreaLayoutGuide)
     }
+    
+    emptyInterestLabel.snp.makeConstraints { make in
+      make.edges.equalTo(view.safeAreaLayoutGuide)
+    }
   }
   
   override func bind() {
     viewModel.input.viewDidLoadEvent.onNext(())
     
-    viewModel.output.coins.subscribe { [weak self] _ in
+    viewModel.output.coins.subscribe { [weak self] coins in
       guard let self else { return }
       collectionView.reloadData()
+      emptyInterestLabel.isHidden = !coins.isEmpty
     }
     
     viewModel.output.loadingIndicatorToggle.subscribe { [weak self] isOn in
