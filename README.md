@@ -38,3 +38,27 @@ ViewController가 메모리에서 해제되면서 ViewModel의 RC가 0으로 내
 `subscribe` 스코프에서 ViewModel을 강한 참조로 변경해서 문제가 해결되었다.
 
 Ps. 다 작성하고나니 생각난건데 그냥 ViewModel의 deinit에서 coordinator를 해제했으면 더 쉽게 해결될 수 있었다.
+
+# 커스텀 Cell Init과 Dequeue 문제
+
+```swift
+(O)
+override init(frame: CGRect) {
+  super.init(frame: frame)
+  
+  setHierarchy()
+  setConstraint()
+}
+  
+(X)
+init() {
+  super.init(frame: .zero)
+  
+  setHierarchy()
+  setConstraint()
+}
+```
+
+Resue 방식으로 사용하는 Cell, Collection ReusableView와 같은 클래스들은 커스텀할 때 init(frame:), init(coder:) 메서드로 구현해야한다.
+
+일반적인 커스텀 View 클래스를 구현할때처럼 init 구문을 만들고 내부에서 super.init을 호출하려고 해도 dequeue 과정에서 호출되지 않기 때문에 크래시 에러가 발생한다.
