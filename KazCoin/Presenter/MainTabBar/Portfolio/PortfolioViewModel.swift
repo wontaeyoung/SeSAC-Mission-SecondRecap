@@ -111,7 +111,14 @@ final class PortfolioViewModel: ViewModel {
       
       let item = output.coins.value.remove(at: move.from.row)
       output.coins.value.insert(item, at: move.to.row)
-      print(output.coins.current.map { $0.name })
+      
+      do {
+        try interestRepository.remake(from: output.coins.current)
+      } catch {
+        LogManager.shared.log(with: error.localizedDescription, to: .network, level: .debug)
+        LogManager.shared.log(with: error, to: .network)
+        coordinator?.showErrorAlert(error: error)
+      }
     }
     
     input.profileButtonTapEvent.subscribe { [weak self] _ in
