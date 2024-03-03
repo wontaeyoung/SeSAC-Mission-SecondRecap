@@ -12,7 +12,10 @@ final class LiveCoinRepository: CoinRepository {
   // MARK: - Method
   func fetch(by searchText: String) async throws -> [Coin] {
     return try await AFManager.shared
-      .callRequest(responseType: CoinResponseDTO.self, router: CoinRouter.coin(query: searchText))
+      .callRequest(
+        responseType: CoinResponseDTO.self,
+        router: CoinRouter.coin(query: searchText)
+      )
       .toEntity()
       .coins
   }
