@@ -10,6 +10,14 @@ extension Double {
     let isMinus: Bool = self.isLess(than: .zero)
     let preOperator: String = isMinus ? "" : "+"
     
-    return preOperator + NumberFormatManager.shared.toRounded(from: self) + "%"
+    return preOperator + NumberFormatManager.shared.toRounded(from: self, fractionDigits: 2) + "%"
+  }
+  
+  var toRounded: String {
+    return NumberFormatManager.shared.toRounded(from: self, fractionDigits: 3)
+  }
+  
+  var toRoundedDollar: String {
+    return NumberFormatManager.shared.toRounded(from: self, fractionDigits: 4)
   }
 }
