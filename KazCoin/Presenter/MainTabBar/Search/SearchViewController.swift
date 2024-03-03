@@ -15,7 +15,7 @@ final class SearchViewController: BaseViewController, ViewModelController {
   
   // MARK: - UI
   private lazy var searchBar = UISearchBar().configured {
-    $0.placeholder = KazCoinAsset.LabelTitle.searchCoinPlaceholder
+    $0.placeholder = Constant.LabelTitle.searchCoinPlaceholder
     $0.tintColor = KazCoinAsset.Color.brand
     $0.autocapitalizationType = .none
     $0.autocorrectionType = .no
@@ -26,7 +26,7 @@ final class SearchViewController: BaseViewController, ViewModelController {
   }
   
   private lazy var searchController = UISearchController(searchResultsController: nil).configured {
-    $0.searchBar.placeholder = KazCoinAsset.LabelTitle.searchCoinPlaceholder
+    $0.searchBar.placeholder = Constant.LabelTitle.searchCoinPlaceholder
     $0.searchBar.tintColor = KazCoinAsset.Color.brand
     $0.searchBar.autocapitalizationType = .none
     $0.searchBar.autocorrectionType = .no
@@ -112,7 +112,7 @@ final class SearchViewController: BaseViewController, ViewModelController {
         message,
         duration: 1.0,
         position: .center,
-        title: KazCoinAsset.LabelTitle.interestConfiguration
+        title: Constant.LabelTitle.interestConfiguration
       )
     }
     

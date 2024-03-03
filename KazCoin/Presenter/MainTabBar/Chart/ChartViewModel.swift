@@ -7,7 +7,6 @@
 
 import Foundation
 import KazUtility
-import CoinDesignSystem
 
 final class ChartViewModel: ViewModel {
   
@@ -78,7 +77,7 @@ final class ChartViewModel: ViewModel {
       guard let coin = output.coin.current else { return }
       
       let interest: Bool = interestRepository.fetch().contains(coinID)
-      let toastMessage: String = KazCoinAsset.LabelTitle.interestToggleMessage(coin.name, isOn: !interest)
+      let toastMessage: String = Constant.LabelTitle.interestToggleMessage(coin.name, isOn: !interest)
       
       do {
         if interest {

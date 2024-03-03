@@ -238,7 +238,7 @@ final class ChartViewController: BaseViewController, ViewModelController {
         message,
         duration: 1,
         position: .center,
-        title: KazCoinAsset.LabelTitle.interestConfiguration
+        title: Constant.LabelTitle.interestConfiguration
       )
     }
     
@@ -262,11 +262,11 @@ final class ChartViewController: BaseViewController, ViewModelController {
   }
   
   private func updateUI(with coin: Coin) {
-    todayLabel.text = KazCoinAsset.LabelTitle.today
-    highTitleLabel.text = KazCoinAsset.LabelTitle.highPrice
-    lowTitleLabel.text = KazCoinAsset.LabelTitle.lowPrice
-    highestTitleLabel.text = KazCoinAsset.LabelTitle.highestPrice
-    lowestTitleLabel.text = KazCoinAsset.LabelTitle.lowestPrice
+    todayLabel.text = Constant.LabelTitle.today
+    highTitleLabel.text = Constant.LabelTitle.highPrice
+    lowTitleLabel.text = Constant.LabelTitle.lowPrice
+    highestTitleLabel.text = Constant.LabelTitle.highestPrice
+    lowestTitleLabel.text = Constant.LabelTitle.lowestPrice
     
     iconImageView.kf.setImage(with: coin.iconURL)
     nameLabel.text = coin.name
