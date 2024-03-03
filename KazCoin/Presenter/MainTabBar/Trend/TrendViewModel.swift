@@ -86,12 +86,14 @@ final class TrendViewModel: ViewModel {
         
         do {
           let trend = try await trendRepository.fetch()
+          output.topCoins.onNext(trend.coins)
+          output.topNFT.onNext(trend.nfts)
+          
+          guard !newInterestCoins.isEmpty else { return }
+          
           let coins = try await coinRepository.fetch(from: newInterestCoins)
             .reversed()
             .map { $0 }
-          
-          output.topCoins.onNext(trend.coins)
-          output.topNFT.onNext(trend.nfts)
           output.interestCoins.onNext(coins)
           currentInterestCoins = newInterestCoins
         } catch {
@@ -108,6 +110,10 @@ final class TrendViewModel: ViewModel {
       let isInterestChagned: Bool = currentInterestCoins != newInterestCoins
       
       guard isInterestChagned else { return }
+      guard !newInterestCoins.isEmpty else {
+        currentInterestCoins = newInterestCoins
+        return
+      }
       
       Task { [weak self] in
         guard let self else { return }

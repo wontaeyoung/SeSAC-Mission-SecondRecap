@@ -93,11 +93,6 @@ final class TrendViewController: BaseViewController, ViewModelController {
   }
   
   override func bind() {
-    viewModel.output.interestCoins.subscribe { [weak self] coins in
-      guard let self else { return }
-      collectionView.reloadData()
-    }
-    
     viewModel.output.loadingIndicatorToggle.subscribe { [weak self] isOn in
       guard let self else { return }
       guard let isOn else { return }
@@ -106,6 +101,7 @@ final class TrendViewController: BaseViewController, ViewModelController {
         view.makeToastActivity(.center)
       } else {
         view.hideToastActivity()
+        collectionView.reloadData()
       }
     }
     
