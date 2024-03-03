@@ -28,5 +28,14 @@ final class LiveCoinRepository: CoinRepository {
         additionalError: [429: CoinError.tooManyRequest]
       )
       .map { $0.toEntity() }
+      .sorted {
+        guard let firstIndex = idList.firstIndex(of: $0.id),
+              let secondIndex = idList.firstIndex(of: $1.id)
+        else {
+          return false
+        }
+        
+        return firstIndex < secondIndex
+      }
   }
 }
