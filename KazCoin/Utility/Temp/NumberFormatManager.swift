@@ -19,14 +19,14 @@ public final class NumberFormatManager {
   private func configFormatter() {
     formatter.numberStyle = .decimal
     formatter.roundingMode = .halfUp
-    formatter.maximumFractionDigits = 2
   }
   
   func toCurrency(from number: Int) -> String {
     return formatter.string(from: number as NSNumber) ?? String(number)
   }
   
-  func toRounded(from number: Double) -> String {
+  func toRounded(from number: Double, fractionDigits: Int) -> String {
+    formatter.maximumFractionDigits = fractionDigits
     return formatter.string(from: number as NSNumber) ?? String(number)
   }
 }
