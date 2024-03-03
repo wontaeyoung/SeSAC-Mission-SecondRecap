@@ -994,7 +994,7 @@
 				DEVELOPMENT_TEAM = 75QZ7682T2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KazCoin/Config/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WonTaeYoung;
+				INFOPLIST_KEY_CFBundleDisplayName = "원태영";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -1023,7 +1023,7 @@
 				DEVELOPMENT_TEAM = 75QZ7682T2;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = KazCoin/Config/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = WonTaeYoung;
+				INFOPLIST_KEY_CFBundleDisplayName = "원태영";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
