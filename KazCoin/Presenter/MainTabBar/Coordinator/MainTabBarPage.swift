@@ -17,6 +17,19 @@ enum MainTabBarPage: Int, CaseIterable {
     self.rawValue
   }
   
+  var navigationTitle: String {
+    switch self {
+      case .trend:
+        return "Crypto Coin"
+      case .search:
+        return "Search"
+      case .portfolio:
+        return "Favorite Coin"
+      case .user:
+        return "Profile"
+    }
+  }
+  
   var icon: UIImage {
     switch self {
       case .trend:
