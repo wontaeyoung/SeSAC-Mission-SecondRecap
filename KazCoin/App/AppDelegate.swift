@@ -6,11 +6,24 @@
 //
 
 import UIKit
+import Toast
+import CoinDesignSystem
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    ToastManager.shared.style = ToastStyle().configured {
+      $0.backgroundColor = KazCoinAsset.Color.cardBackground
+      $0.messageColor = KazCoinAsset.Color.primaryText
+      $0.messageFont = .systemFont(ofSize: 15, weight: .semibold)
+      $0.titleColor = KazCoinAsset.Color.brand
+      $0.titleFont = .systemFont(ofSize: 17, weight: .bold)
+      $0.titleAlignment = .center
+      $0.activityBackgroundColor = .clear
+      $0.activityIndicatorColor = KazCoinAsset.Color.primaryText
+    }
+    
     return true
   }
   
