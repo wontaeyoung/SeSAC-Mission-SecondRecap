@@ -33,7 +33,7 @@ final class PortfolioCoordinator: Coordinator {
     let coinRepository = LiveCoinRepository()
     let viewModel = PortfolioViewModel(coinRepository: coinRepository, interestRepository: interestRepository)
     let viewController = PortfolioViewController(viewModel: viewModel)
-      .navigationTitle(with: "Favorite Coin", displayMode: .always)
+      .navigationTitle(with: MainTabBarPage.portfolio.navigationTitle, displayMode: .always)
       .hideBackTitle()
     
     viewModel.coordinator = self

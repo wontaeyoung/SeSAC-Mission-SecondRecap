@@ -33,7 +33,7 @@ final class SearchCoordinator: Coordinator {
     let coinRepository = LiveCoinRepository()
     let viewModel = SearchViewModel(coinRepository: coinRepository, interestRepository: interestRepository)
     let viewController = SearchViewController(viewModel: viewModel)
-      .navigationTitle(with: "Search", displayMode: .always)
+      .navigationTitle(with: MainTabBarPage.search.navigationTitle, displayMode: .always)
       .hideBackTitle()
     
     viewModel.coordinator = self
