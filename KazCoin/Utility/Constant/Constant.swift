@@ -10,7 +10,11 @@ enum Constant {
   enum LabelTitle {
     
     static let emptyInterestCoin: String = "즐겨찾기한 코인이 없어요!"
-    static let interestMovedMessage: String = "위치가 이동했어요."
+    static let interestMovedMessage: String = "가 이동했어요."
+    static let deleteInterestTitle: String = "즐겨찾기 삭제"
+    static let deleteInterestMessage: String = "관심 코인을 모두 삭제할까요?"
+    static let deletedIterestMessage: String = "모든 관심 코인이 삭제되었어요."
+    
     static let expandCoin: String = "더 보기"
     static let searchCoinPlaceholder: String = "Coin Name"
     static let today: String = "Today"
