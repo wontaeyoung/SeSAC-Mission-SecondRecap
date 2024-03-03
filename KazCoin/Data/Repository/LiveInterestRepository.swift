@@ -56,4 +56,9 @@ final class LiveInterestRepository: InterestRepository {
       try service.create(with: CoinMapper.toRealmObject(from: $0))
     }
   }
+  
+  func deleteAll() throws {
+    let realmCoins: Results<RealmCoin> = service.fetch()
+    try service.delete(from: realmCoins)
+  }
 }

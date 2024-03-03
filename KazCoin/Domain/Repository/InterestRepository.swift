@@ -11,4 +11,5 @@ protocol InterestRepository {
   func fetch() -> [String]
   func delete(with coin: Coin) throws
   func remake(from coins: [Coin]) throws
+  func deleteAll() throws
 }
