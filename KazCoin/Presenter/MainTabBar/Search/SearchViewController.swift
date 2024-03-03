@@ -132,6 +132,7 @@ extension SearchViewController: UISearchBarDelegate {
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     viewModel.input.searchButtonTapEvent.onNext(searchBar.text)
+    view.endEditing(true)
   }
 }
 
@@ -166,5 +167,6 @@ extension SearchViewController: TableControllable {
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     viewModel.input.didSelectRowEvent.onNext(indexPath)
+    view.endEditing(true)
   }
 }
