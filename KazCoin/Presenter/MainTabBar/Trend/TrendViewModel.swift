@@ -45,7 +45,7 @@ final class TrendViewModel: ViewModel {
   
   private var sections: [TrendSection] {
     return shouldFavoriteSectionHidden
-    ? TrendSection.allCases.dropFirst().map { $0 }
+    ? [.topCoin, .topNFT]
     : TrendSection.allCases
   }
   
@@ -120,6 +120,20 @@ final class TrendViewModel: ViewModel {
           LogManager.shared.log(with: error, to: .network)
           coordinator?.showErrorAlert(error: error)
         }
+      }
+    }
+    
+    input.didSelectItemEvent.subscribe { [weak self] indexPath in
+      guard let self else { return }
+      guard let indexPath else { return }
+      
+      switch sectionAt(indexPath) {
+        case .interest, .topCoin:
+          guard let coin = itemAt(indexPath) as? Coin else { return }
+          
+          coordinator?.connectChartFlow(coinID: coin.id)
+        case .topNFT:
+          break
       }
     }
   }

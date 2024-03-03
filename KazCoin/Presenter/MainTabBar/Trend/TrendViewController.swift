@@ -136,6 +136,10 @@ extension TrendViewController: CollectionControllable {
     }
   }
   
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    viewModel.input.didSelectItemEvent.onNext(indexPath)
+  }
+  
   func collectionView(
     _ collectionView: UICollectionView,
     viewForSupplementaryElementOfKind kind: String,

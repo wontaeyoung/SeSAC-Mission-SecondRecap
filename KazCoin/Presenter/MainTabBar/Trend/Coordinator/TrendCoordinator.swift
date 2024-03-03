@@ -40,4 +40,17 @@ final class TrendCoordinator: Coordinator {
     viewModel.coordinator = self
     self.push(viewController)
   }
+  
+  func connectChartFlow(coinID: String) {
+    let coordinator = ChartCoordinator(self.navigationController)
+    coordinator.showChartView(coinID: coinID)
+    coordinator.delegate = self
+    self.addChild(coordinator)
+  }
+}
+
+extension TrendCoordinator: CoordinatorDelegate {
+  func coordinatorDidEnd(_ childCoordinator: Coordinator) {
+    self.emptyOut()
+  }
 }
