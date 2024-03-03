@@ -102,7 +102,10 @@ extension PortfolioViewController: CollectionControllable {
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PortfolioCollectionViewCell.identifier, for: indexPath) as! PortfolioCollectionViewCell
+    let cell = collectionView.dequeueReusableCell(
+      withReuseIdentifier: PortfolioCollectionViewCell.identifier,
+      for: indexPath
+    ) as! PortfolioCollectionViewCell
     let coin: Coin = viewModel.itemAt(indexPath)
     
     cell.updateUI(with: coin)

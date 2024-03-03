@@ -146,7 +146,10 @@ extension SearchViewController: TableControllable {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
+    let cell = tableView.dequeueReusableCell(
+      withIdentifier: SearchTableViewCell.identifier,
+      for: indexPath
+    ) as! SearchTableViewCell
     let item: Coin = viewModel.itemAt(indexPath)
     let interested: Bool = viewModel.interestedAt(indexPath)
     
@@ -155,6 +158,7 @@ extension SearchViewController: TableControllable {
       interested: interested,
       searchText: viewModel.currentSearchText
     )
+    
     cell.updateTapEvent { [weak self] in
       guard let self else { return }
       
