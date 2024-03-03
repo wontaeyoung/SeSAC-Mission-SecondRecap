@@ -19,7 +19,7 @@ final class TrendCollectionHeaderView: UICollectionReusableView {
   // MARK: - UI
   private let titleLabel = UILabel().configured {
     $0.textColor = KazCoinAsset.Color.titleName
-    $0.font = .systemFont(ofSize: 29, weight: .heavy)
+    $0.font = .systemFont(ofSize: 21, weight: .bold)
   }
   
   // MARK: - Initializer
