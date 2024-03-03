@@ -11,7 +11,7 @@ extension NSCollectionLayoutSection {
   
   static func makeCardSection(
     cardWidth: Double,
-    cardHeight: Double,
+    cardHeight: NSCollectionLayoutDimension,
     cardSpacing: Double,
     scrollStyle: UICollectionLayoutSectionOrthogonalScrollingBehavior,
     sectionInset: NSDirectionalEdgeInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0),
@@ -29,7 +29,7 @@ extension NSCollectionLayoutSection {
     let cardGroup = NSCollectionLayoutGroup.horizontal(
       layoutSize: NSCollectionLayoutSize(
         widthDimension: .fractionalWidth(cardWidth),
-        heightDimension: .fractionalHeight(cardHeight)
+        heightDimension: cardHeight
       ),
       subitems: [cardItem]
     )
@@ -56,7 +56,7 @@ extension NSCollectionLayoutSection {
     cardListCount: Int,
     listSpacing: Double,
     cardWidth: Double,
-    cardHeight: Double,
+    cardHeight: NSCollectionLayoutDimension,
     cardSpacing: Double,
     scrollStyle: UICollectionLayoutSectionOrthogonalScrollingBehavior,
     sectionInset: NSDirectionalEdgeInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0),
@@ -84,7 +84,7 @@ extension NSCollectionLayoutSection {
     let cardGroup: NSCollectionLayoutGroup = .horizontal(
       layoutSize: .init(
         widthDimension: .fractionalWidth(cardWidth),
-        heightDimension: .fractionalHeight(cardHeight)
+        heightDimension: cardHeight
       ),
       subitems: [listGroup]
     )
