@@ -7,7 +7,6 @@
 
 import Foundation
 import KazUtility
-import CoinDesignSystem
 
 final class SearchViewModel: ViewModel {
   
@@ -34,7 +33,7 @@ final class SearchViewModel: ViewModel {
   weak var coordinator: SearchCoordinator?
   private let coinRepository: any CoinRepository
   private let interestRepository: any InterestRepository
-  var currentSearchText: String = ""
+  private(set) var currentSearchText: String = ""
   
   // MARK: - Initializer
   init(coinRepository: any CoinRepository, interestRepository: any InterestRepository) {
@@ -90,13 +89,13 @@ final class SearchViewModel: ViewModel {
         guard let index = output.interestCoins.current.firstIndex(of: selectedCoin.id) else {
           try interestRepository.create(with: selectedCoin)
           output.interestCoins.value.append(selectedCoin.id)
-          output.interestToast.onNext(KazCoinAsset.LabelTitle.interestToggleMessage(selectedCoin.name, isOn: true))
+          output.interestToast.onNext(Constant.LabelTitle.interestToggleMessage(selectedCoin.name, isOn: true))
           return
         }
         
         try interestRepository.delete(with: selectedCoin)
         output.interestCoins.value.remove(at: index)
-        output.interestToast.onNext(KazCoinAsset.LabelTitle.interestToggleMessage(selectedCoin.name, isOn: false))
+        output.interestToast.onNext(Constant.LabelTitle.interestToggleMessage(selectedCoin.name, isOn: false))
         
       } catch {
         LogManager.shared.log(with: error, to: .local)

@@ -13,7 +13,6 @@ final class LiveInterestRepository: InterestRepository {
   
   // MARK: - Property
   private let service: any RealmService
-  private let maxInterestCount: Int = 10
   
   // MARK: - Initializer
   init(service: RealmService) {
@@ -26,8 +25,8 @@ final class LiveInterestRepository: InterestRepository {
   func create(with coin: Coin) throws {
     let realmCoins: Results<RealmCoin> = service.fetch()
     
-    guard realmCoins.count < maxInterestCount else {
-      throw CoinError.cannotOverMaximumInterest(max: maxInterestCount)
+    guard realmCoins.count < Constant.BusinessLiteral.maxInterestCount else {
+      throw CoinError.cannotOverMaximumInterest(max: Constant.BusinessLiteral.maxInterestCount)
     }
     
     try service.create(with: CoinMapper.toRealmObject(from: coin))

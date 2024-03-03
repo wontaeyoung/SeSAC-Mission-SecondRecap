@@ -48,8 +48,7 @@ final class TrendViewModel: ViewModel {
   }
   
   private var shouldFavoriteSectionHidden: Bool {
-    let shouldShowFavoriteCoinCount: Int = 2
-    return output.interestCoins.current.count < shouldShowFavoriteCoinCount
+    return output.interestCoins.current.count < Constant.BusinessLiteral.shouldShowFavoriteCoinCount
   }
   
   private var favoriteSectionHiddenBuffer: Int {
