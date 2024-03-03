@@ -21,7 +21,7 @@ final class PortfolioViewController: BaseViewController, ViewModelController {
   }
   
   private let emptyInterestLabel = UILabel().configured {
-    $0.text = "즐겨찾기한 코인이 없어요!"
+    $0.text = Constant.LabelTitle.emptyInterestCoin
     $0.textColor = .gray
     $0.font = .systemFont(ofSize: 17, weight: .bold)
     $0.textAlignment = .center
@@ -85,6 +85,18 @@ final class PortfolioViewController: BaseViewController, ViewModelController {
       } else {
         view.hideToastActivity()
       }
+    }
+    
+    viewModel.output.interestMoved.subscribe { [weak self] message in
+      guard let self else { return }
+      guard let message else { return }
+      
+      view.makeToast(
+        message,
+        duration: 1.0,
+        position: .center,
+        title: Constant.LabelTitle.interestConfiguration
+      )
     }
   }
   

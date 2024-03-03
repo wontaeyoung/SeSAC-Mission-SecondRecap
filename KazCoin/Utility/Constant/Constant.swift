@@ -9,6 +9,8 @@ enum Constant {
   
   enum LabelTitle {
     
+    static let emptyInterestCoin: String = "즐겨찾기한 코인이 없어요!"
+    static let interestMovedMessage: String = "위치가 이동했어요."
     static let expandCoin: String = "더 보기"
     static let searchCoinPlaceholder: String = "Coin Name"
     static let today: String = "Today"

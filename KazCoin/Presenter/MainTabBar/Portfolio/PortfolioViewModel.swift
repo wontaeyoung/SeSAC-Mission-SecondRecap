@@ -22,6 +22,7 @@ final class PortfolioViewModel: ViewModel {
   struct Output {
     var coins: Observable<[Coin]> = .init([])
     var loadingIndicatorToggle: Observable<Bool?> = .init(nil)
+    var interestMoved: Observable<String?> = .init(nil)
   }
   
   var input = Input()
@@ -113,7 +114,9 @@ final class PortfolioViewModel: ViewModel {
       output.coins.value.insert(item, at: move.to.row)
       
       do {
+        let toastMessage = "\(item.name) \(Constant.LabelTitle.interestMovedMessage) \(move.from.row) → \(move.to.row)"
         try interestRepository.remake(from: output.coins.current)
+        output.interestMoved.onNext(toastMessage)
       } catch {
         LogManager.shared.log(with: error.localizedDescription, to: .network, level: .debug)
         LogManager.shared.log(with: error, to: .network)
