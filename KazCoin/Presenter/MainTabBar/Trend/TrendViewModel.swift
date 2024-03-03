@@ -24,6 +24,7 @@ final class TrendViewModel: ViewModel {
     var viewDidLoadEvent: Observable<Void?> = .init(nil)
     var viewWillAppearEvent: Observable<Void?> = .init(nil)
     var didSelectItemEvent: Observable<IndexPath?> = .init(nil)
+    var profileButtonTapEvent: Observable<Void?> = .init(nil)
   }
   
   struct Output {
@@ -135,6 +136,12 @@ final class TrendViewModel: ViewModel {
         case .topNFT:
           break
       }
+    }
+    
+    input.profileButtonTapEvent.subscribe { [weak self] _ in
+      guard let self else { return }
+      
+      coordinator?.moveTab(to: .user)
     }
   }
   

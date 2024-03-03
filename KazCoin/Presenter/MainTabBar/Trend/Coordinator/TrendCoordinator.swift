@@ -13,6 +13,7 @@ final class TrendCoordinator: Coordinator {
   
   // MARK: - Property
   weak var delegate: CoordinatorDelegate?
+  weak var tabBarDelegate: TabBarDelegate?
   var navigationController: UINavigationController
   var childCoordinators: [Coordinator]
   
@@ -46,6 +47,10 @@ final class TrendCoordinator: Coordinator {
     coordinator.showChartView(coinID: coinID)
     coordinator.delegate = self
     self.addChild(coordinator)
+  }
+  
+  func moveTab(to tab: MainTabBarPage) {
+    tabBarDelegate?.moveTab(to: tab)
   }
 }
 

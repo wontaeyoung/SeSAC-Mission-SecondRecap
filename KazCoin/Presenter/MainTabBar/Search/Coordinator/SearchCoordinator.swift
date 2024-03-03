@@ -13,6 +13,7 @@ final class SearchCoordinator: Coordinator {
   
   // MARK: - Property
   weak var delegate: CoordinatorDelegate?
+  weak var tabBarDelegate: TabBarDelegate?
   var navigationController: UINavigationController
   var childCoordinators: [any Coordinator]
   
@@ -45,6 +46,10 @@ final class SearchCoordinator: Coordinator {
     coordinator.showChartView(coinID: coinID)
     coordinator.delegate = self
     self.addChild(coordinator)
+  }
+  
+  func moveTab(to tab: MainTabBarPage) {
+    tabBarDelegate?.moveTab(to: tab)
   }
 }
 

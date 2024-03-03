@@ -66,6 +66,7 @@ final class SearchViewController: BaseViewController, ViewModelController {
   }
   
   override func setAttribute() {
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: .tabUser, style: .plain, target: self, action: #selector(profileBarButtonTapped))
   }
   
   override func setConstraint() {
@@ -116,6 +117,11 @@ final class SearchViewController: BaseViewController, ViewModelController {
         view.hideToastActivity()
       }
     }
+  }
+  
+  // MARK: - Selector
+  @objc private func profileBarButtonTapped() {
+    viewModel.input.profileButtonTapEvent.onNext(())
   }
 }
 

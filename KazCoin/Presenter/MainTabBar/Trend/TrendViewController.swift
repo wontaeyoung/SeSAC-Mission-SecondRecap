@@ -7,6 +7,7 @@
 
 import UIKit
 import KazUtility
+import CoinDesignSystem
 import SnapKit
 import Toast
 
@@ -75,8 +76,13 @@ final class TrendViewController: BaseViewController, ViewModelController {
     
     viewModel.input.viewWillAppearEvent.onNext(())
   }
+  
   override func setHierarchy() {
     view.addSubviews(collectionView)
+  }
+  
+  override func setAttribute() {
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: .tabUser, style: .plain, target: self, action: #selector(profileBarButtonTapped))
   }
   
   override func setConstraint() {
@@ -104,6 +110,11 @@ final class TrendViewController: BaseViewController, ViewModelController {
     }
     
     viewModel.input.viewDidLoadEvent.onNext(())
+  }
+  
+  // MARK: - Selector
+  @objc private func profileBarButtonTapped() {
+    viewModel.input.profileButtonTapEvent.onNext(())
   }
 }
 

@@ -8,6 +8,16 @@
 import UIKit
 import KazUtility
 
+protocol TabBarDelegate: AnyObject {
+  func moveTab(to tab: MainTabBarPage)
+}
+
+extension MainTabBarCoordinator: TabBarDelegate {
+  func moveTab(to tab: MainTabBarPage) {
+    tabBarController.selectedIndex = tab.index
+  }
+}
+
 final class MainTabBarCoordinator: Coordinator {
   
   // MARK: - Property
@@ -36,7 +46,7 @@ final class MainTabBarCoordinator: Coordinator {
   private func configureTabBarController(with controllers: [UINavigationController]) {
     tabBarController.configure {
       $0.setViewControllers(controllers, animated: false)
-      $0.selectedIndex = MainTabBarPage.search.index
+      $0.selectedIndex = MainTabBarPage.trend.index
     }
   }
   
@@ -53,16 +63,19 @@ final class MainTabBarCoordinator: Coordinator {
       case .trend:
         let coordinator = TrendCoordinator(tabPageController)
         coordinator.start()
+        coordinator.tabBarDelegate = self
         self.addChild(coordinator)
         
       case .search:
         let coordinator = SearchCoordinator(tabPageController)
         coordinator.start()
+        coordinator.tabBarDelegate = self
         self.addChild(coordinator)
         
       case .portfolio:
         let coordinator = PortfolioCoordinator(tabPageController)
         coordinator.start()
+        coordinator.tabBarDelegate = self
         self.addChild(coordinator)
         
       case .user:
@@ -72,4 +85,3 @@ final class MainTabBarCoordinator: Coordinator {
     }
   }
 }
-
