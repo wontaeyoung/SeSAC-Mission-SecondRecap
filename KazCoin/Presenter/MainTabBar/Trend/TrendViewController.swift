@@ -19,7 +19,7 @@ final class TrendViewController: BaseViewController, ViewModelController {
       case .interest:
         return .makeCardSection(
           cardWidth: 0.6,
-          cardHeight: .fractionalWidth(0.45),
+          cardHeight: .fractionalWidth(0.6 * 0.75),
           cardSpacing: 16,
           scrollStyle: .groupPaging,
           sectionInset: .init(top: 16, leading: 16, bottom: 32, trailing: 16),
@@ -41,14 +41,19 @@ final class TrendViewController: BaseViewController, ViewModelController {
   }
   
   private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout).configured {
+    
+    $0.register(
+      TrendCollectionHeaderView.self,
+      forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+      withReuseIdentifier: TrendCollectionHeaderView.identifier
+    )
     $0.register(
       TrendInterestCoinCollectionCell.self,
       forCellWithReuseIdentifier: TrendInterestCoinCollectionCell.identifier
     )
     $0.register(
-      TrendCollectionHeaderView.self,
-      forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-      withReuseIdentifier: TrendCollectionHeaderView.identifier
+      TrendTopCollectionCell.self,
+      forCellWithReuseIdentifier: TrendTopCollectionCell.identifier
     )
     $0.delegate = self
     $0.dataSource = self
@@ -74,13 +79,10 @@ final class TrendViewController: BaseViewController, ViewModelController {
     view.addSubviews(collectionView)
   }
   
-  override func setAttribute() {
-    
-  }
-  
   override func setConstraint() {
     collectionView.snp.makeConstraints { make in
-      make.edges.equalTo(view.safeAreaLayoutGuide)
+      make.top.equalTo(view.safeAreaLayoutGuide).inset(16)
+      make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
     }
   }
   
@@ -101,18 +103,8 @@ final class TrendViewController: BaseViewController, ViewModelController {
       }
     }
     
-    viewModel.output.updateFavoriteSection.subscribe { [weak self] _ in
-      guard let self else { return }
-      /// WillAppear에서도 인터레스트 코인 업데이트해야함
-      collectionView.reloadData()
-    }
-    
     viewModel.input.viewDidLoadEvent.onNext(())
   }
-  
-  // MARK: - Method
-  
-  // MARK: - Selector
 }
 
 extension TrendViewController: CollectionControllable {
@@ -133,13 +125,13 @@ extension TrendViewController: CollectionControllable {
         cell.updateUI(with: coin)
         return cell
         
-      case .topCoin:
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrendInterestCoinCollectionCell.identifier, for: indexPath) as! TrendInterestCoinCollectionCell
-        cell.backgroundColor = .systemYellow
-        return cell
-      case .topNFT:
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrendInterestCoinCollectionCell.identifier, for: indexPath) as! TrendInterestCoinCollectionCell
-        cell.backgroundColor = .systemBlue
+      case .topCoin, .topNFT:
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrendTopCollectionCell.identifier, for: indexPath) as! TrendTopCollectionCell
+        let section = viewModel.sectionAt(indexPath)
+        let item = viewModel.itemAt(indexPath)
+        let row = indexPath.row
+        
+        cell.updateUI(section: section, with: item, row: row)
         return cell
     }
   }

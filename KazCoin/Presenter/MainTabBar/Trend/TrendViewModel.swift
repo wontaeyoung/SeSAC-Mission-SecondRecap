@@ -23,6 +23,7 @@ final class TrendViewModel: ViewModel {
   struct Input {
     var viewDidLoadEvent: Observable<Void?> = .init(nil)
     var viewWillAppearEvent: Observable<Void?> = .init(nil)
+    var didSelectItemEvent: Observable<IndexPath?> = .init(nil)
   }
   
   struct Output {
@@ -30,7 +31,6 @@ final class TrendViewModel: ViewModel {
     var topCoins: Observable<[Coin]> = .init([])
     var topNFT: Observable<[NFT]> = .init([])
     var loadingIndicatorToggle: Observable<Bool?> = .init(nil)
-    var updateFavoriteSection: Observable<Void?> = .init(nil)
   }
   
   var input = Input()
@@ -44,7 +44,9 @@ final class TrendViewModel: ViewModel {
   private var currentInterestCoins: [String] = []
   
   private var sections: [TrendSection] {
-    return TrendSection.allCases
+    return shouldFavoriteSectionHidden
+    ? TrendSection.allCases.dropFirst().map { $0 }
+    : TrendSection.allCases
   }
   
   private var shouldFavoriteSectionHidden: Bool {
@@ -73,7 +75,7 @@ final class TrendViewModel: ViewModel {
     
     input.viewDidLoadEvent.subscribe { [weak self] _ in
       guard let self else { return }
-      currentInterestCoins = interestRepository.fetch()
+      let newInterestCoins = interestRepository.fetch()
       
       Task { [weak self] in
         guard let self else { return }
@@ -82,8 +84,12 @@ final class TrendViewModel: ViewModel {
         defer { output.loadingIndicatorToggle.onNext(false) }
         
         do {
-          let coins = try await coinRepository.fetch(from: currentInterestCoins)
+          let trend = try await trendRepository.fetch()
+          let coins = try await coinRepository.fetch(from: newInterestCoins)
+          output.topCoins.onNext(trend.coins)
+          output.topNFT.onNext(trend.nfts)
           output.interestCoins.onNext(coins)
+          currentInterestCoins = newInterestCoins
         } catch {
           LogManager.shared.log(with: error.localizedDescription, to: .network, level: .debug)
           LogManager.shared.log(with: error, to: .network)
@@ -98,7 +104,6 @@ final class TrendViewModel: ViewModel {
       let isInterestChagned: Bool = currentInterestCoins != newInterestCoins
       
       guard isInterestChagned else { return }
-      currentInterestCoins = newInterestCoins
       
       Task { [weak self] in
         guard let self else { return }
@@ -107,8 +112,9 @@ final class TrendViewModel: ViewModel {
         defer { output.loadingIndicatorToggle.onNext(false) }
         
         do {
-          let coins = try await coinRepository.fetch(from: currentInterestCoins)
+          let coins = try await coinRepository.fetch(from: newInterestCoins)
           output.interestCoins.onNext(coins)
+          currentInterestCoins = newInterestCoins
         } catch {
           LogManager.shared.log(with: error.localizedDescription, to: .network, level: .debug)
           LogManager.shared.log(with: error, to: .network)
@@ -119,15 +125,15 @@ final class TrendViewModel: ViewModel {
   }
   
   func numberOfSection() -> Int {
-    return sections.count - favoriteSectionHiddenBuffer
+    return sections.count
   }
   
   func sectionAt(_ index: Int) -> TrendSection {
-    return sections[index + favoriteSectionHiddenBuffer]
+    return sections[index]
   }
   
   func sectionAt(_ indexPath: IndexPath) -> TrendSection {
-    return sections[indexPath.section + favoriteSectionHiddenBuffer]
+    return sections[indexPath.section]
   }
   
   func numberOfItems(_ section: Int) -> Int {
