@@ -55,6 +55,8 @@
 		6E4711E82B8DCA1500AF0AD8 /* TrendDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4711E72B8DCA1500AF0AD8 /* TrendDTO.swift */; };
 		6E4711EA2B8DDFE100AF0AD8 /* CoinDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4711E92B8DDFE100AF0AD8 /* CoinDTO.swift */; };
 		6E4711EF2B8DE87900AF0AD8 /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4711EE2B8DE87900AF0AD8 /* Trend.swift */; };
+		6E5590762B95028300774187 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5590752B95028300774187 /* UserViewController.swift */; };
+		6E5590782B9502D600774187 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5590772B9502D600774187 /* UserViewModel.swift */; };
 		6E68F9792B90525500A1C218 /* SearchCoin.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E68F9782B90520000A1C218 /* SearchCoin.json */; };
 		6E68F97B2B9058F800A1C218 /* Configurator+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E68F97A2B9058F800A1C218 /* Configurator+.swift */; };
 		6E68F97E2B90636A00A1C218 /* ChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E68F97D2B90636A00A1C218 /* ChartViewController.swift */; };
@@ -143,6 +145,8 @@
 		6E4711E72B8DCA1500AF0AD8 /* TrendDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDTO.swift; sourceTree = "<group>"; };
 		6E4711E92B8DDFE100AF0AD8 /* CoinDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDTO.swift; sourceTree = "<group>"; };
 		6E4711EE2B8DE87900AF0AD8 /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
+		6E5590752B95028300774187 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		6E5590772B9502D600774187 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		6E68F9782B90520000A1C218 /* SearchCoin.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = SearchCoin.json; sourceTree = "<group>"; };
 		6E68F97A2B9058F800A1C218 /* Configurator+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Configurator+.swift"; sourceTree = "<group>"; };
 		6E68F97D2B90636A00A1C218 /* ChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewController.swift; sourceTree = "<group>"; };
@@ -316,6 +320,8 @@
 			isa = PBXGroup;
 			children = (
 				6E16E5292B8E432300C436CF /* Coordinator */,
+				6E5590752B95028300774187 /* UserViewController.swift */,
+				6E5590772B9502D600774187 /* UserViewModel.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -713,6 +719,7 @@
 				6E16E5082B8E35F300C436CF /* CoinRepository.swift in Sources */,
 				6E16E5652B8F44F200C436CF /* NFT.swift in Sources */,
 				6E16E52F2B8EB6EC00C436CF /* UINavigationController+.swift in Sources */,
+				6E5590782B9502D600774187 /* UserViewModel.swift in Sources */,
 				6E16E5112B8E3C8900C436CF /* TrendRepository.swift in Sources */,
 				6E16E5722B8F601B00C436CF /* NumberFormatManager.swift in Sources */,
 				6E16E5222B8E429600C436CF /* TrendCoordinator.swift in Sources */,
@@ -750,6 +757,7 @@
 				6E16E52B2B8E432D00C436CF /* UserCoordinator.swift in Sources */,
 				6EE8AF272B8DAAFF004162F3 /* SceneDelegate.swift in Sources */,
 				6E16E5252B8E42EF00C436CF /* SearchCoordinator.swift in Sources */,
+				6E5590762B95028300774187 /* UserViewController.swift in Sources */,
 				6E68F9892B90ACC500A1C218 /* ChartView.swift in Sources */,
 				6E16E5572B8F24B700C436CF /* CoinRouter.swift in Sources */,
 				6E68F98F2B9269EB00A1C218 /* TrendViewController.swift in Sources */,

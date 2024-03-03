@@ -7,6 +7,7 @@
 
 import UIKit
 import KazUtility
+import KazRealm
 
 final class UserCoordinator: Coordinator {
   
@@ -23,7 +24,19 @@ final class UserCoordinator: Coordinator {
   
   // MARK: - Method
   func start() {
+    showUserView()
+  }
+  
+  func showUserView() {
+    let service = LiveRealmService()
+    let repository = LiveInterestRepository(service: service)
+    let viewModel = UserViewModel(repository: repository)
+    let viewController = UserViewController(viewModel: viewModel)
+      .navigationTitle(with: MainTabBarPage.user.navigationTitle, displayMode: .always)
+      .hideBackTitle()
     
+    viewModel.coordinator = self
+    self.push(viewController)
   }
 }
 
