@@ -43,6 +43,10 @@ final class ChartViewModel: ViewModel {
     transform()
   }
   
+  deinit {
+    coordinator?.end()
+  }
+  
   // MARK: - Method
   func transform() {
     
@@ -67,7 +71,10 @@ final class ChartViewModel: ViewModel {
         } catch {
           LogManager.shared.log(with: error.localizedDescription, to: .network, level: .debug)
           LogManager.shared.log(with: error, to: .network)
-          coordinator?.showErrorAlert(error: error)
+          coordinator?.showErrorAlert(error: error) { [weak self] in
+            guard let self else { return }
+            coordinator?.pop()
+          }
         }
       }
     }
@@ -109,9 +116,7 @@ final class ChartViewModel: ViewModel {
   private func showNoResultAlert() {
     coordinator?.showAlert(title: CoinError.noResultWithID(id: coinID).alertDescription, message: "") { [weak self] in
       guard let self else { return }
-      
       coordinator?.pop()
-      coordinator?.end()
     }
   }
 }
