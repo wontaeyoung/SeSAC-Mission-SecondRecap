@@ -47,6 +47,13 @@ final class PortfolioViewController: BaseViewController, ViewModelController {
     super.viewWillAppear(animated)
     
     viewModel.input.viewWillAppearEvent.onNext(())
+    
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    
+    viewModel.input.viewWillDisAppearEvent.onNext(())
   }
   
   override func setHierarchy() {
@@ -96,6 +103,17 @@ final class PortfolioViewController: BaseViewController, ViewModelController {
         duration: 1.0,
         position: .center,
         title: Constant.LabelTitle.interestConfiguration
+      )
+    }
+    
+    viewModel.output.timerActionProceeded.subscribe { [weak self] _ in
+      guard let self else { return }
+      
+      view.makeToast(
+        Constant.LabelTitle.coinRefeshedMessage,
+        duration: 1.0,
+        position: .bottom,
+        title: Constant.LabelTitle.coinRefeshedTitle
       )
     }
   }

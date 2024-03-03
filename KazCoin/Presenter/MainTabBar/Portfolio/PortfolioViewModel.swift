@@ -14,6 +14,7 @@ final class PortfolioViewModel: ViewModel {
   struct Input {
     var viewDidLoadEvent: Observable<Void?> = .init(nil)
     var viewWillAppearEvent: Observable<Void?> = .init(nil)
+    var viewWillDisAppearEvent: Observable<Void?> = .init(nil)
     var didSelectItemEvent: Observable<IndexPath?> = .init(nil)
     var didItemMovedEvent: Observable<(from: IndexPath, to: IndexPath)?> = .init(nil)
     var profileButtonTapEvent: Observable<Void?> = .init(nil)
@@ -23,6 +24,7 @@ final class PortfolioViewModel: ViewModel {
     var coins: Observable<[Coin]> = .init([])
     var loadingIndicatorToggle: Observable<Bool?> = .init(nil)
     var interestMoved: Observable<String?> = .init(nil)
+    var timerActionProceeded: Observable<Void?> = .init(nil)
   }
   
   var input = Input()
@@ -33,6 +35,7 @@ final class PortfolioViewModel: ViewModel {
   private let coinRepository: any CoinRepository
   private let interestRepository: any InterestRepository
   private var currentInterestCoins: [String] = []
+  private var timer: Timer?
   
   // MARK: - Initializer
   init(coinRepository: any CoinRepository, interestRepository: any InterestRepository) {
@@ -70,6 +73,7 @@ final class PortfolioViewModel: ViewModel {
     
     input.viewWillAppearEvent.subscribe { [weak self] _ in
       guard let self else { return }
+      startTimer()
       
       let newInterestCoins = interestRepository.fetch()
       guard isInterestChanged(current: currentInterestCoins, new: newInterestCoins) else { return }
@@ -96,6 +100,11 @@ final class PortfolioViewModel: ViewModel {
           coordinator?.showErrorAlert(error: error)
         }
       }
+    }
+    
+    input.viewWillDisAppearEvent.subscribe { [weak self] _ in
+      guard let self else { return }
+      timer?.invalidate()
     }
     
     input.didSelectItemEvent.subscribe { [weak self] indexPath in
@@ -141,5 +150,25 @@ final class PortfolioViewModel: ViewModel {
   
   private func isInterestChanged(current: [String], new: [String]) -> Bool {
     return current != new
+  }
+  
+  private func startTimer() {
+    timer?.invalidate()
+    
+    timer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { _ in
+      Task { [weak self] in
+        guard let self else { return }
+        
+        do {
+          let coins = try await coinRepository.fetch(from: currentInterestCoins)
+          output.coins.onNext(coins)
+          output.timerActionProceeded.onNext(())
+        } catch {
+          LogManager.shared.log(with: error.localizedDescription, to: .network, level: .debug)
+          LogManager.shared.log(with: error, to: .network)
+          coordinator?.showErrorAlert(error: error)
+        }
+      }
+    }
   }
 }
