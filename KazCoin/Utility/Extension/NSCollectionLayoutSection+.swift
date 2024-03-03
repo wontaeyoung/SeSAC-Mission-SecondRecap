@@ -1,5 +1,5 @@
 //
-//  NSCollectionLayoutSection.swift
+//  NSCollectionLayoutSection+.swift
 //  KazCoin
 //
 //  Created by 원태영 on 3/2/24.
