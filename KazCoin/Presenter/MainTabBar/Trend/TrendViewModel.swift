@@ -87,6 +87,9 @@ final class TrendViewModel: ViewModel {
         do {
           let trend = try await trendRepository.fetch()
           let coins = try await coinRepository.fetch(from: newInterestCoins)
+            .reversed()
+            .map { $0 }
+          
           output.topCoins.onNext(trend.coins)
           output.topNFT.onNext(trend.nfts)
           output.interestCoins.onNext(coins)
