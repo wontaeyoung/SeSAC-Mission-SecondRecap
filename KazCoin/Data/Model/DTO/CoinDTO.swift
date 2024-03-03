@@ -68,7 +68,7 @@ struct CoinDTO: DTO {
     self.market_cap_rank = try container.decodeWithDefaultValue(Int.self, forKey: .market_cap_rank)
     self.high_24h = try container.decodeWithDefaultValue(Double.self, forKey: .high_24h)
     self.low_24h = try container.decodeWithDefaultValue(Double.self, forKey: .low_24h)
-    self.price_change_percentage_24h = try container.decodeWithDefaultValue(Double.self, forKey: .price_change_percentage_24h)
+    
     self.ath = try container.decodeWithDefaultValue(Double.self, forKey: .ath)
     self.ath_date = try container.decodeWithDefaultValue(String.self, forKey: .ath_date)
     self.atl = try container.decodeWithDefaultValue(Double.self, forKey: .atl)
@@ -77,6 +77,13 @@ struct CoinDTO: DTO {
     self.sparkline_in_7d = try container.decodeWithDefaultValue(SparklineDTO.self, forKey: .sparkline_in_7d).price
     self.priceUSD = try container.decodeWithDefaultValue(TrendCoinPriceDTO.self, forKey: .data).price
     
+    if let coinPriceChangeRate = try container.decodeIfPresent(Double.self, forKey: .price_change_percentage_24h) {
+      self.price_change_percentage_24h = coinPriceChangeRate
+    } else {
+      self.price_change_percentage_24h = try container.decodeWithDefaultValue(TrendCoinPriceDTO.self, forKey: .data)
+        .price_change_percentage_24h
+        .krw
+    }
     
     if let large = try container.decodeIfPresent(String.self, forKey: .large) {
       self.thumb = large
@@ -182,8 +189,21 @@ struct SparklineDTO: DefaultValueProvidable {
 struct TrendCoinPriceDTO: DefaultValueProvidable {
   
   let price: String  // 코인 현재가
+  let price_change_percentage_24h: TrendCoinPriceChangeDTO
   
   static var defaultValue: TrendCoinPriceDTO {
-    return TrendCoinPriceDTO(price: .defaultValue)
+    return TrendCoinPriceDTO(
+      price: .defaultValue,
+      price_change_percentage_24h: .defaultValue
+    )
+  }
+}
+
+struct TrendCoinPriceChangeDTO: DefaultValueProvidable {
+  
+  let krw: Double
+  
+  static var defaultValue: TrendCoinPriceChangeDTO {
+    return TrendCoinPriceChangeDTO(krw: .defaultValue)
   }
 }
