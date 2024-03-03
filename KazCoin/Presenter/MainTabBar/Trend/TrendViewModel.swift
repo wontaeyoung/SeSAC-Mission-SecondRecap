@@ -129,10 +129,20 @@ final class TrendViewModel: ViewModel {
       guard let indexPath else { return }
       
       switch sectionAt(indexPath) {
-        case .interest, .topCoin:
-          guard let coin = itemAt(indexPath) as? Coin else { return }
+        case .interest:
+          let isExpand: Bool = indexPath.row + 1 >= Constant.BusinessLiteral.trendExpandCoinCount
           
+          if isExpand {
+            coordinator?.moveTab(to: .portfolio)
+          } else {
+            guard let coin = itemAt(indexPath) as? Coin else { return }
+            coordinator?.connectChartFlow(coinID: coin.id)
+          }
+          
+        case .topCoin:
+          guard let coin = itemAt(indexPath) as? Coin else { return }
           coordinator?.connectChartFlow(coinID: coin.id)
+          
         case .topNFT:
           break
       }
@@ -171,7 +181,7 @@ final class TrendViewModel: ViewModel {
   func numberOfItems(_ section: Int) -> Int {
     switch sectionAt(section) {
       case .interest:
-        return output.interestCoins.current.count
+        return min(output.interestCoins.current.count, Constant.BusinessLiteral.trendExpandCoinCount)
       case .topCoin:
         return output.topCoins.current.count
       case .topNFT:

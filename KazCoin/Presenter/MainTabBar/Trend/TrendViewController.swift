@@ -129,14 +129,14 @@ extension TrendViewController: CollectionControllable {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     switch viewModel.sectionAt(indexPath.section) {
-      case .interest:
+      case .interest:        
         let cell = collectionView.dequeueReusableCell(
           withReuseIdentifier: TrendInterestCoinCollectionCell.identifier,
           for: indexPath
         ) as! TrendInterestCoinCollectionCell
         guard let coin = viewModel.itemAt(indexPath) as? Coin else { return cell }
         
-        cell.updateUI(with: coin)
+        cell.updateUI(with: coin, indexPath: indexPath)
         return cell
         
       case .topCoin, .topNFT:

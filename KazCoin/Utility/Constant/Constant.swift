@@ -9,6 +9,7 @@ enum Constant {
   
   enum LabelTitle {
     
+    static let expandCoin: String = "더 보기"
     static let searchCoinPlaceholder: String = "Coin Name"
     static let today: String = "Today"
     static let highPrice: String = "고가"
@@ -25,5 +26,6 @@ enum Constant {
     
     static let maxInterestCount: Int = 10
     static let shouldShowFavoriteCoinCount: Int = 2
+    static let trendExpandCoinCount: Int = 4
   }
 }
