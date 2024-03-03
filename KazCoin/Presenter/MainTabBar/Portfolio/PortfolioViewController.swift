@@ -18,6 +18,7 @@ final class PortfolioViewController: BaseViewController, ViewModelController {
     $0.delegate = self
     $0.dataSource = self
     $0.addGestureRecognizer(longPressGesture)
+    $0.refreshControl = refeshControl
   }
   
   private let emptyInterestLabel = UILabel().configured {
@@ -31,6 +32,10 @@ final class PortfolioViewController: BaseViewController, ViewModelController {
     target: self,
     action: #selector(handleLongPress(gestureRecognizer:))
   )
+  
+  private lazy var refeshControl = UIRefreshControl().configured {
+    $0.addTarget(self, action: #selector(refresh), for: .valueChanged)
+  }
   
   // MARK: - Property
   let viewModel: PortfolioViewModel
@@ -126,17 +131,30 @@ final class PortfolioViewController: BaseViewController, ViewModelController {
   @objc private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
     switch gestureRecognizer.state {
       case .began:
-        guard let selectedIndexPath = collectionView.indexPathForItem(at: gestureRecognizer.location(in: collectionView)) else {
+        guard let selectedIndexPath = collectionView.indexPathForItem(
+          at: gestureRecognizer.location(in: collectionView)
+        ) else {
           break
         }
+        
         collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+      
       case .changed:
-        collectionView.updateInteractiveMovementTargetPosition(gestureRecognizer.location(in: gestureRecognizer.view!))
+        collectionView.updateInteractiveMovementTargetPosition(
+          gestureRecognizer.location(in: gestureRecognizer.view!)
+        )
+      
       case .ended:
         collectionView.endInteractiveMovement()
+      
       default:
         collectionView.cancelInteractiveMovement()
     }
+  }
+  
+  @objc private func refresh() {
+    viewModel.input.viewWillAppearEvent.onNext(())
+    refeshControl.endRefreshing()
   }
 }
 
