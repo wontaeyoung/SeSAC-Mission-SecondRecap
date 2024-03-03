@@ -8,6 +8,7 @@
 import UIKit
 import KazUtility
 import SnapKit
+import Toast
 
 final class TrendViewController: BaseViewController, ViewModelController {
   
@@ -18,7 +19,7 @@ final class TrendViewController: BaseViewController, ViewModelController {
       case .interest:
         return .makeCardSection(
           cardWidth: 0.6,
-          cardHeight: 0.2,
+          cardHeight: .fractionalWidth(0.45),
           cardSpacing: 16,
           scrollStyle: .groupPaging,
           sectionInset: .init(top: 16, leading: 16, bottom: 32, trailing: 16),
@@ -30,7 +31,7 @@ final class TrendViewController: BaseViewController, ViewModelController {
           cardListCount: 3,
           listSpacing: 8,
           cardWidth: 0.8,
-          cardHeight: 0.5,
+          cardHeight: .fractionalWidth(0.53),
           cardSpacing: 16,
           scrollStyle: .groupPaging,
           sectionInset: .init(top: 8, leading: 16, bottom: 32, trailing: 16),
@@ -40,7 +41,10 @@ final class TrendViewController: BaseViewController, ViewModelController {
   }
   
   private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout).configured {
-    $0.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+    $0.register(
+      TrendInterestCoinCollectionCell.self,
+      forCellWithReuseIdentifier: TrendInterestCoinCollectionCell.identifier
+    )
     $0.register(
       TrendCollectionHeaderView.self,
       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -61,6 +65,11 @@ final class TrendViewController: BaseViewController, ViewModelController {
   }
   
   // MARK: - Life Cycle
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    
+    viewModel.input.viewWillAppearEvent.onNext(())
+  }
   override func setHierarchy() {
     view.addSubviews(collectionView)
   }
@@ -76,7 +85,29 @@ final class TrendViewController: BaseViewController, ViewModelController {
   }
   
   override func bind() {
+    viewModel.output.interestCoins.subscribe { [weak self] coins in
+      guard let self else { return }
+      collectionView.reloadData()
+    }
     
+    viewModel.output.loadingIndicatorToggle.subscribe { [weak self] isOn in
+      guard let self else { return }
+      guard let isOn else { return }
+      
+      if isOn {
+        view.makeToastActivity(.center)
+      } else {
+        view.hideToastActivity()
+      }
+    }
+    
+    viewModel.output.updateFavoriteSection.subscribe { [weak self] _ in
+      guard let self else { return }
+      /// WillAppear에서도 인터레스트 코인 업데이트해야함
+      collectionView.reloadData()
+    }
+    
+    viewModel.input.viewDidLoadEvent.onNext(())
   }
   
   // MARK: - Method
@@ -90,29 +121,27 @@ extension TrendViewController: CollectionControllable {
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    switch viewModel.sectionAt(section) {
-      case .interest:
-        return 10
-      case .topCoin:
-        return 30
-      case .topNFT:
-        return 30
-    }
+    return viewModel.numberOfItems(section)
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-    
     switch viewModel.sectionAt(indexPath.section) {
       case .interest:
-        cell.backgroundColor = .systemRed
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrendInterestCoinCollectionCell.identifier, for: indexPath) as! TrendInterestCoinCollectionCell
+        guard let coin = viewModel.itemAt(indexPath) as? Coin else { return cell }
+        
+        cell.updateUI(with: coin)
+        return cell
+        
       case .topCoin:
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrendInterestCoinCollectionCell.identifier, for: indexPath) as! TrendInterestCoinCollectionCell
         cell.backgroundColor = .systemYellow
+        return cell
       case .topNFT:
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TrendInterestCoinCollectionCell.identifier, for: indexPath) as! TrendInterestCoinCollectionCell
         cell.backgroundColor = .systemBlue
+        return cell
     }
-    
-    return cell
   }
   
   func collectionView(
@@ -135,11 +164,4 @@ extension TrendViewController: CollectionControllable {
       $0.setTitle(viewModel.sectionAt(indexPath.section).title)
     }
   }
-}
-
-@available(iOS 17, *)
-#Preview {
-  let repo = LiveTrendRepository()
-  let vm = TrendViewModel(repository: repo)
-  return TrendViewController(viewModel: vm)
 }
