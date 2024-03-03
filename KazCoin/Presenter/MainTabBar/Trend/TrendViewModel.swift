@@ -157,6 +157,17 @@ final class TrendViewModel: ViewModel {
     return sections[indexPath.section]
   }
   
+  func headerTitle(_ indexPath: IndexPath) -> String {
+    let section = sectionAt(indexPath)
+    
+    switch section {
+      case .interest:
+        return section.title + " [\(currentInterestCoins.count) / \(Constant.BusinessLiteral.maxInterestCount)]"
+      case .topCoin, .topNFT:
+        return section.title
+    }
+  }
+  
   func numberOfItems(_ section: Int) -> Int {
     switch sectionAt(section) {
       case .interest:

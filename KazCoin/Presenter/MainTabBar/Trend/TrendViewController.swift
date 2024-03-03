@@ -174,7 +174,7 @@ extension TrendViewController: CollectionControllable {
     ) as! TrendCollectionHeaderView
     
     return headerView.configured {
-      $0.setTitle(viewModel.sectionAt(indexPath.section).title)
+      $0.setTitle(viewModel.headerTitle(indexPath))
     }
   }
 }
