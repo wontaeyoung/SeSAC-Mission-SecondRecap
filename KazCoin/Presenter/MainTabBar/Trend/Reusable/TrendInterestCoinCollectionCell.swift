@@ -36,8 +36,6 @@ final class TrendInterestCoinCollectionCell: BaseCollectionViewCell {
   
   private let priceChangeRateLabel = UILabel().configured {
     $0.font = .systemFont(ofSize: 13, weight: .semibold)
-    $0.clipsToBounds = true
-    $0.layer.cornerRadius = 5
   }
   
   // MARK: - Life Cycle
