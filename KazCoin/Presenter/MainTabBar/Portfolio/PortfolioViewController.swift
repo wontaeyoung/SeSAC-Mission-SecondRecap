@@ -17,6 +17,7 @@ final class PortfolioViewController: BaseViewController, ViewModelController {
     $0.register(PortfolioCollectionViewCell.self, forCellWithReuseIdentifier: PortfolioCollectionViewCell.identifier)
     $0.delegate = self
     $0.dataSource = self
+    $0.addGestureRecognizer(longPressGesture)
   }
   
   private let emptyInterestLabel = UILabel().configured {
@@ -25,6 +26,11 @@ final class PortfolioViewController: BaseViewController, ViewModelController {
     $0.font = .systemFont(ofSize: 17, weight: .bold)
     $0.textAlignment = .center
   }
+  
+  private lazy var longPressGesture = UILongPressGestureRecognizer(
+    target: self,
+    action: #selector(handleLongPress(gestureRecognizer:))
+  )
   
   // MARK: - Property
   let viewModel: PortfolioViewModel
@@ -86,6 +92,22 @@ final class PortfolioViewController: BaseViewController, ViewModelController {
   @objc private func profileBarButtonTapped() {
     viewModel.input.profileButtonTapEvent.onNext(())
   }
+  
+  @objc private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+    switch gestureRecognizer.state {
+      case .began:
+        guard let selectedIndexPath = collectionView.indexPathForItem(at: gestureRecognizer.location(in: collectionView)) else {
+          break
+        }
+        collectionView.beginInteractiveMovementForItem(at: selectedIndexPath)
+      case .changed:
+        collectionView.updateInteractiveMovementTargetPosition(gestureRecognizer.location(in: gestureRecognizer.view!))
+      case .ended:
+        collectionView.endInteractiveMovement()
+      default:
+        collectionView.cancelInteractiveMovement()
+    }
+  }
 }
 
 extension PortfolioViewController: CollectionControllable {
@@ -114,8 +136,15 @@ extension PortfolioViewController: CollectionControllable {
     let coin: Coin = viewModel.itemAt(indexPath)
     
     cell.updateUI(with: coin)
-    
     return cell
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, canMoveItemAt indexPath: IndexPath) -> Bool {
+    return true
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    viewModel.input.didItemMovedEvent.onNext((from: sourceIndexPath, to: destinationIndexPath))
   }
   
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

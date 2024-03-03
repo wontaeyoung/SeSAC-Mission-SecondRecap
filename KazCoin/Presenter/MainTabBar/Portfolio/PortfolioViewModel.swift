@@ -15,6 +15,7 @@ final class PortfolioViewModel: ViewModel {
     var viewDidLoadEvent: Observable<Void?> = .init(nil)
     var viewWillAppearEvent: Observable<Void?> = .init(nil)
     var didSelectItemEvent: Observable<IndexPath?> = .init(nil)
+    var didItemMovedEvent: Observable<(from: IndexPath, to: IndexPath)?> = .init(nil)
     var profileButtonTapEvent: Observable<Void?> = .init(nil)
   }
   
@@ -45,8 +46,8 @@ final class PortfolioViewModel: ViewModel {
     
     input.viewDidLoadEvent.subscribe { [weak self] _ in
       guard let self else { return }
-      currentInterestCoins = interestRepository.fetch()
-      guard !currentInterestCoins.isEmpty else { return }
+      let newInterestCoins = interestRepository.fetch()
+      guard !newInterestCoins.isEmpty else { return }
       
       Task { [weak self] in
         guard let self else { return }
@@ -55,9 +56,9 @@ final class PortfolioViewModel: ViewModel {
         defer { output.loadingIndicatorToggle.onNext(false) }
         
         do {
-          let coins = try await coinRepository.fetch(from: currentInterestCoins)
-          
+          let coins = try await coinRepository.fetch(from: newInterestCoins)
           output.coins.onNext(coins)
+          currentInterestCoins = newInterestCoins
         } catch {
           LogManager.shared.log(with: error.localizedDescription, to: .network, level: .debug)
           LogManager.shared.log(with: error, to: .network)
@@ -86,8 +87,8 @@ final class PortfolioViewModel: ViewModel {
         
         do {
           let coins = try await coinRepository.fetch(from: newInterestCoins)
-          currentInterestCoins = newInterestCoins
           output.coins.onNext(coins)
+          currentInterestCoins = newInterestCoins
         } catch {
           LogManager.shared.log(with: error.localizedDescription, to: .network, level: .debug)
           LogManager.shared.log(with: error, to: .network)
@@ -102,6 +103,15 @@ final class PortfolioViewModel: ViewModel {
       
       let selectedCoinID = output.coins.current[indexPath.row].id
       coordinator?.connectChartFlow(coinID: selectedCoinID)
+    }
+    
+    input.didItemMovedEvent.subscribe { [weak self] move in
+      guard let self else { return }
+      guard let move else { return }
+      
+      let item = output.coins.value.remove(at: move.from.row)
+      output.coins.value.insert(item, at: move.to.row)
+      print(output.coins.current.map { $0.name })
     }
     
     input.profileButtonTapEvent.subscribe { [weak self] _ in
