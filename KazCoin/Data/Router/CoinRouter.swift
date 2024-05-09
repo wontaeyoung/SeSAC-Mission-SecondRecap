@@ -8,7 +8,7 @@
 import KazAlamofire
 import Alamofire
 
-enum CoinRouter: AFRouter {
+enum CoinRouter: Router {
   
   case trend
   case coin(query: String)
@@ -45,23 +45,23 @@ enum CoinRouter: AFRouter {
   }
   
   var headers: HTTPHeaders {
-    return []
+    return HTTPHeaders()
   }
   
-  var parameters: Parameters? {
+  var parameters: HTTPParameters {
     switch self {
       case .trend:
-        return nil
+        return HTTPParameters()
         
       case .coin(let query):
-        return [ParameterKey.query.key: query]
+        return HTTPParameters([ParameterKey.query.key: query])
         
       case .market(let idList):
-        return [
+        return HTTPParameters([
           ParameterKey.vs_currency.key: "krw",
           ParameterKey.ids.key: idList.joined(separator: ","),
           ParameterKey.sparkline.key: "true"
-        ]
+        ])
     }
   }
   
