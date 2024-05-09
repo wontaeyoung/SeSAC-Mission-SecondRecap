@@ -11,7 +11,7 @@ final class LiveCoinRepository: CoinRepository {
   
   // MARK: - Method
   func fetch(by searchText: String) async throws -> [Coin] {
-    return try await AFManager.shared
+    return try await HTTPClient.shared
       .callRequest(
         responseType: CoinResponseDTO.self,
         router: CoinRouter.coin(query: searchText)
@@ -21,11 +21,11 @@ final class LiveCoinRepository: CoinRepository {
   }
   
   func fetch(from idList: [String]) async throws -> [Coin] {
-    return try await AFManager.shared
+    return try await HTTPClient.shared
       .callRequest(
         responseType: [CoinDTO].self,
         router: CoinRouter.market(idList: idList),
-        additionalError: [429: CoinError.tooManyRequest]
+        additionalError: [429: .tooManyRequest]
       )
       .map { $0.toEntity() }
       .sorted {

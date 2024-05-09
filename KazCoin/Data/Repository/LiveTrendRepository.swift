@@ -10,7 +10,8 @@ import KazAlamofire
 final class LiveTrendRepository: TrendRepository {
   
   func fetch() async throws -> Trend {
-    return try await AFManager.shared
+    print("HERE : \(try! CoinRouter.trend.asURLRequest().url!)")
+    return try await HTTPClient.shared
       .callRequest(responseType: TrendDTO.self, router: CoinRouter.trend)
       .toEntity()
   }
