@@ -75,7 +75,7 @@ struct CoinDTO: DTO {
     self.atl_date = try container.decodeWithDefaultValue(String.self, forKey: .atl_date)
     self.last_updated = try container.decodeWithDefaultValue(String.self, forKey: .last_updated)
     self.sparkline_in_7d = try container.decodeWithDefaultValue(SparklineDTO.self, forKey: .sparkline_in_7d).price
-    self.priceUSD = try container.decodeWithDefaultValue(TrendCoinPriceDTO.self, forKey: .data).price
+    self.priceUSD = try container.decodeWithDefaultValue(TrendCoinPriceDTO.self, forKey: .data).price.description
     
     if let coinPriceChangeRate = try container.decodeIfPresent(Double.self, forKey: .price_change_percentage_24h) {
       self.price_change_percentage_24h = coinPriceChangeRate
@@ -188,7 +188,8 @@ struct SparklineDTO: DefaultValueProvidable {
 
 struct TrendCoinPriceDTO: DefaultValueProvidable {
   
-  let price: String  // 코인 현재가
+  /// price가 원래 $3.14 형태였는데 Double로 변경되었음, 라벨에 표시하는 예외처리 필요
+  let price: Double  // 코인 현재가
   let price_change_percentage_24h: TrendCoinPriceChangeDTO
   
   static var defaultValue: TrendCoinPriceDTO {
